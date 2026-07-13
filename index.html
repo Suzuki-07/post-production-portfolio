@@ -425,6 +425,16 @@
         .resolve-actions { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 8px; margin: 12px 0 14px; }
         .resolve-action { min-height: 34px; border: 1px solid rgba(255,255,255,0.11); background: rgba(0,0,0,0.34); color: rgba(255,255,255,0.62); font: 900 8px var(--mono); letter-spacing: 0.12em; text-transform: uppercase; display: grid; place-items: center; }
         .resolve-action.is-live { color: var(--red); border-color: rgba(255,0,0,0.42); background: rgba(255,0,0,0.07); }
+        .ai-post-console { margin-top: 12px; border: 1px solid rgba(255,255,255,0.11); background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(0,0,0,0.22)); padding: 12px; }
+        .ai-post-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; color: rgba(255,255,255,0.48); font: 900 8px var(--mono); letter-spacing: 0.14em; text-transform: uppercase; }
+        .ai-post-head strong { color: rgba(255,255,255,0.86); font: 900 10px var(--sans); letter-spacing: 0.08em; }
+        .ai-post-tabs { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 7px; }
+        .ai-post-tab { min-height: 34px; border: 1px solid rgba(255,255,255,0.12); background: rgba(0,0,0,0.28); color: rgba(255,255,255,0.56); font: 900 8px var(--mono); letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: transform 0.28s var(--ease-expo), border-color 0.28s var(--ease-expo), color 0.28s var(--ease-expo), background 0.28s var(--ease-expo); }
+        .ai-post-tab:hover, .ai-post-tab:focus-visible { outline: none; transform: translateY(-2px); color: var(--white); border-color: rgba(255,0,0,0.34); }
+        .ai-post-tab.is-active { color: var(--red); border-color: rgba(255,0,0,0.48); background: rgba(255,0,0,0.08); }
+        .ai-post-output { margin-top: 11px; min-height: 78px; display: grid; align-content: center; gap: 7px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 11px; }
+        .ai-post-output strong { color: var(--white); font: 900 15px var(--sans); letter-spacing: 0.02em; }
+        .ai-post-output p { margin: 0; color: rgba(255,255,255,0.62); font: 800 10px/1.65 var(--mono); letter-spacing: 0.04em; text-transform: uppercase; }
         .primary-wheels { display: flex; justify-content: space-between; margin-top: 12px; }
         .wheel-col { display: flex; flex-direction: column; align-items: center; gap: 8px; }
         .wheel-title { font: 8px var(--mono); color: var(--gray); letter-spacing: 1px; }
@@ -1031,7 +1041,7 @@
                 <span class="text-mask"><span class="title-line title-line-1 text-inner" data-i18n="title-1" data-zh="敬畏每一帧" data-en="RESPECT EVERY FRAME">敬畏每一帧</span></span>
                 <span class="text-mask"><span class="title-line title-line-2 hero-red-text text-inner" data-i18n="title-2" data-zh="让影像成立" data-en="MAKE IMAGES WORK">让影像成立</span></span>
             </h1>
-            <p class="hero-desc" data-i18n="hero-desc" data-zh="这份作品集面向影视飓风后期实习岗位：以调色样片、剪辑方向、ACP 赛事经历和工作流能力，呈现我对素材整理、粗剪节奏、色彩管理、AI 辅助流程与稳定交付的理解。希望从基础执行做起，在真实项目里证明学习速度和审美判断。" data-en="Built for a MediaStorm post-production internship. It presents grading reels, editing direction, ACP competition experience, and workflow discipline across media organization, rough cuts, pacing, color management, AI-assisted post workflow, and reliable delivery. I am ready to start from fundamental execution and prove learning speed and visual judgment on real projects.">这份作品集面向影视飓风后期实习岗位：以调色样片、剪辑方向、ACP 赛事经历和工作流能力，呈现我对素材整理、粗剪节奏、色彩管理、AI 辅助流程与稳定交付的理解。希望从基础执行做起，在真实项目里证明学习速度和审美判断。</p>
+            <p class="hero-desc" data-i18n="hero-desc" data-zh="这份作品集面向影视飓风后期实习岗位：以调色样片、剪辑方向、ACP 赛事经历和 AI 协同工作流，呈现我对素材整理、粗剪节奏、色彩管理与稳定交付的理解。Codex 用于拆解和复核流程，Seedance 2.5 用于镜头预演思路，最终判断仍回到真实素材和画面结果。" data-en="Built for a MediaStorm post-production internship. It presents grading reels, editing direction, ACP competition experience, and an AI-assisted workflow. Codex supports breakdown and review, Seedance 2.5 informs motion previs thinking, and final judgment stays with real footage and the finished frame.">这份作品集面向影视飓风后期实习岗位：以调色样片、剪辑方向、ACP 赛事经历和 AI 协同工作流，呈现我对素材整理、粗剪节奏、色彩管理与稳定交付的理解。Codex 用于拆解和复核流程，Seedance 2.5 用于镜头预演思路，最终判断仍回到真实素材和画面结果。</p>
             <div class="hero-scramble" aria-live="polite"><span class="hero-scramble-target" id="heroScrambleText">素材入库 / 后期系统就绪</span></div>
             <div class="hero-actions">
                 <a class="hero-cta" href="#color-portfolio" data-i18n="hero-cta-work" data-zh="查看调色样片" data-en="View Grading Reels">查看调色样片</a>
@@ -1384,6 +1394,18 @@
                         <div class="resolve-action">Skin Safe</div>
                         <div class="resolve-action">Export Check</div>
                     </div>
+                    <div class="ai-post-console" data-ai-console>
+                        <div class="ai-post-head"><span data-i18n="ai-console-label" data-zh="AI 协同流程" data-en="AI POST WORKFLOW">AI 协同流程</span><strong>CODEX / SEEDANCE 2.5 / RESOLVE</strong></div>
+                        <div class="ai-post-tabs" role="tablist" aria-label="AI 后期流程切换">
+                            <button class="ai-post-tab is-active" type="button" data-ai-step="codex" data-zh-title="Codex 拆解" data-en-title="Codex Breakdown" data-zh-copy="用 Codex 做脚本拆解、素材清单、检查表和交付前复核，让后期流程更清楚。" data-en-copy="Codex supports script breakdowns, media checklists, review notes, and delivery checks so the post workflow stays clear.">CODEX</button>
+                            <button class="ai-post-tab" type="button" data-ai-step="seedance" data-zh-title="Seedance 2.5 预演" data-en-title="Seedance 2.5 Previs" data-zh-copy="用 Seedance 2.5 风格的动态预演思路判断镜头情绪、运动方向和节奏参考，再回到真实素材里执行。" data-en-copy="Seedance 2.5-inspired previs thinking helps test mood, motion direction, and rhythm references before returning to real footage.">SEEDANCE</button>
+                            <button class="ai-post-tab" type="button" data-ai-step="resolve" data-zh-title="Resolve 交付" data-en-title="Resolve Delivery" data-zh-copy="最终判断仍回到 DaVinci Resolve：节点树、示波器、Rec.709 和稳定母版。" data-en-copy="Final judgment stays in DaVinci Resolve: node tree, scopes, Rec.709, and a stable master.">RESOLVE</button>
+                        </div>
+                        <div class="ai-post-output" aria-live="polite">
+                            <strong id="aiPostTitle">Codex 拆解</strong>
+                            <p id="aiPostCopy">用 Codex 做脚本拆解、素材清单、检查表和交付前复核，让后期流程更清楚。</p>
+                        </div>
+                    </div>
                     <div class="waveform-label" style="margin-bottom: 12px;"><span data-i18n="primary-wheels-label" data-zh="一级色轮" data-en="PRIMARY WHEELS">一级色轮</span></div>
                     <div class="primary-wheels">
                         <div class="wheel-col"><div class="wheel-title" data-i18n="wheel-lift-label" data-zh="暗部" data-en="LIFT">暗部</div><div class="color-wheel" id="wheel-lift" role="slider" tabindex="0" aria-label="Lift 色轮" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="中心"><div class="wheel-target"></div></div></div>
@@ -1498,7 +1520,7 @@
     <div class="gsap-reveal about-grid">
         <div>
             <span class="section-label" data-i18n="about-label" data-zh="后期实习候选人" data-en="POST-PRODUCTION INTERN CANDIDATE">后期实习候选人</span>
-            <div class="about-text" id="splitTextTarget" data-i18n="about-text" data-zh="我正在申请影视后期实习，主方向是剪辑与调色。熟悉 DaVinci Resolve、Premiere Pro、After Effects，并能把生成式 AI 用于参考拆解、脚本/字幕辅助、素材归档与多模态检索。对我来说，工具不是炫技，而是为了更快理解项目、更稳交付结果。" data-en="I am applying for a post-production internship with a focus on editing and color. I work with DaVinci Resolve, Premiere Pro, and After Effects, and use generative AI for reference breakdowns, script and caption assistance, media organization, and multimodal search. Tools are not decoration; they help me understand projects faster and deliver more reliably.">我正在申请影视后期实习，主方向是剪辑与调色。熟悉 DaVinci Resolve、Premiere Pro、After Effects，并能把生成式 AI 用于参考拆解、脚本/字幕辅助、素材归档与多模态检索。对我来说，工具不是炫技，而是为了更快理解项目、更稳交付结果。</div>
+            <div class="about-text" id="splitTextTarget" data-i18n="about-text" data-zh="我正在申请影视后期实习，主方向是剪辑与调色。熟悉 DaVinci Resolve、Premiere Pro、After Effects，也会把 Codex、Seedance 2.5 等 AI 工具放进真实后期流程：先拆解参考和脚本，再做镜头预演、素材归档、字幕辅助与交付检查。工具不是炫技，而是为了更快理解项目、更稳交付结果。" data-en="I am applying for a post-production internship focused on editing and color. I work with DaVinci Resolve, Premiere Pro, and After Effects, and place AI tools such as Codex and Seedance 2.5 inside a real post workflow: reference and script breakdown, motion previs thinking, media organization, caption support, and delivery checks. Tools are not decoration; they help me understand projects faster and deliver more reliably.">我正在申请影视后期实习，主方向是剪辑与调色。熟悉 DaVinci Resolve、Premiere Pro、After Effects，也会把 Codex、Seedance 2.5 等 AI 工具放进真实后期流程：先拆解参考和脚本，再做镜头预演、素材归档、字幕辅助与交付检查。工具不是炫技，而是为了更快理解项目、更稳交付结果。</div>
             <div class="about-proofline" aria-label="工作方式摘要">
                 <div class="about-proof"><span data-i18n="about-proof-1-label" data-zh="01 / 方法" data-en="01 / METHOD">01 / 方法</span><strong data-i18n="about-proof-1" data-zh="先找参考" data-en="REFERENCE FIRST">先找参考</strong></div>
                 <div class="about-proof"><span data-i18n="about-proof-2-label" data-zh="02 / 复核" data-en="02 / REVIEW">02 / 复核</span><strong data-i18n="about-proof-2" data-zh="逐帧检查" data-en="FRAME CHECK">逐帧检查</strong></div>
@@ -2493,6 +2515,7 @@ window.addEventListener('DOMContentLoaded', () => {
         if(typeof window.__updateHeroScrambleLanguage === 'function') window.__updateHeroScrambleLanguage(currentLang);
         if(typeof window.__refreshPortfolioCinemaLanguage === 'function') window.__refreshPortfolioCinemaLanguage();
         if(typeof window.__updateImpactSignalLanguage === 'function') window.__updateImpactSignalLanguage();
+        if(typeof window.__refreshAiPostConsoleLanguage === 'function') window.__refreshAiPostConsoleLanguage();
     };
     const switchLanguage = () => {
         applySiteLanguage(currentLang === 'zh' ? 'en' : 'zh');
@@ -3190,6 +3213,21 @@ window.addEventListener('DOMContentLoaded', () => {
             gsap.fromTo(['#acpLightboxLabel', '#acpLightboxTitle', '#acpLightboxCopy'], { y: 10, opacity: 0.35 }, { y: 0, opacity: 1, duration: 0.36, stagger: 0.035, ease: 'power2.out' });
         }
     };
+    const aiPostTabs = Array.from(document.querySelectorAll('.ai-post-tab'));
+    const aiPostTitle = document.getElementById('aiPostTitle');
+    const aiPostCopy = document.getElementById('aiPostCopy');
+    let activeAiPostTab = aiPostTabs[0] || null;
+    const setAiPostTab = tab => {
+        if(!tab || !aiPostTitle || !aiPostCopy) return;
+        activeAiPostTab = tab;
+        aiPostTabs.forEach(item => item.classList.toggle('is-active', item === tab));
+        const lang = window.__siteLang === 'en' ? 'en' : 'zh';
+        aiPostTitle.textContent = tab.dataset[`${lang}Title`] || '';
+        aiPostCopy.textContent = tab.dataset[`${lang}Copy`] || '';
+    };
+    aiPostTabs.forEach(tab => tab.addEventListener('click', () => setAiPostTab(tab)));
+    window.__refreshAiPostConsoleLanguage = () => setAiPostTab(activeAiPostTab);
+    setAiPostTab(activeAiPostTab);
     acpSlides.forEach((slide, index) => {
         slide.addEventListener('click', () => openAcpLightbox(index));
         slide.addEventListener('keydown', event => {
