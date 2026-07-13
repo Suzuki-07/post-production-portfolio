@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="于博文影视后期个人作品集，展示剪辑、调色、DIT、影像工作流与作品方法。">
+    <meta name="description" content="于博文影视后期实习作品集，面向剪辑、调色与 AI 辅助后期流程，展示调色样片、ACP 荣誉、工作流和交付意识。">
     <meta name="theme-color" content="#050505">
     <meta property="og:title" content="于博文 — Post-Production Portfolio">
-    <meta property="og:description" content="剪辑、调色、影像工作流与影视后期作品集。">
+    <meta property="og:description" content="面向影视后期实习岗位的剪辑、调色、AI 辅助流程与交付作品集。">
     <title>于博文 — POST-PRODUCTION EDITOR</title>
     <link rel="icon" href="data:,">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -272,8 +272,14 @@
         .impact-stage { position: relative; min-height: 720px; border-top: 1px solid rgba(255,255,255,0.16); border-bottom: 1px solid rgba(255,255,255,0.16); overflow: hidden; isolation: isolate; background: radial-gradient(circle at var(--impact-x, 50%) var(--impact-y, 48%), rgba(255,0,0,0.16), transparent 28%), linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.006)); }
         .impact-stage::before { content: ''; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px); background-size: 54px 54px; opacity: 0.54; }
         .impact-stage::after { content: 'POST / CUT / GRADE / DELIVERY'; position: absolute; left: -2vw; right: -2vw; bottom: -0.11em; color: rgba(255,255,255,0.035); font: 900 clamp(68px, 11vw, 180px) var(--sans); letter-spacing: 0; white-space: nowrap; pointer-events: none; }
+        .impact-media-field { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+        .impact-media-layer { position: absolute; inset: -3%; background-position: center; background-size: cover; opacity: 0; filter: grayscale(1) contrast(1.18) brightness(0.42); transform: scale(1.08); transition: opacity 1s var(--ease-expo), transform 4.8s var(--ease-expo), filter 1s var(--ease-expo); will-change: opacity, transform; }
+        .impact-media-layer::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,5,5,0.96) 0 33%, rgba(5,5,5,0.58) 58%, rgba(5,5,5,0.82) 100%), radial-gradient(circle at 68% 44%, rgba(255,0,0,0.16), transparent 36%); }
+        .impact-media-layer.is-active { opacity: 0.34; transform: scale(1.015); filter: grayscale(0.68) contrast(1.16) brightness(0.58); }
+        .impact-kinetic { position: absolute; inset: 50% 3% auto; z-index: 1; overflow: hidden; transform: translateY(-50%); text-align: center; pointer-events: none; mix-blend-mode: screen; }
+        .impact-kinetic span { display: block; color: rgba(255,255,255,0.115); font: 900 clamp(46px, 8.2vw, 138px) var(--sans); line-height: 0.88; letter-spacing: 0; text-transform: uppercase; text-wrap: balance; transform: translateZ(0); will-change: transform, opacity, filter; }
         .impact-meta { position: absolute; top: 132px; left: 28px; right: 28px; display: flex; justify-content: space-between; gap: 20px; color: rgba(255,255,255,0.58); font: 700 10px var(--mono); letter-spacing: 2px; text-transform: uppercase; }
-        .impact-layout { position: relative; z-index: 2; min-height: inherit; display: grid; grid-template-columns: minmax(0, 0.78fr) minmax(340px, 1.1fr); gap: clamp(26px, 4vw, 70px); align-items: center; padding: clamp(174px, 11vw, 206px) clamp(28px, 5vw, 74px) clamp(88px, 8vw, 128px); }
+        .impact-layout { position: relative; z-index: 2; min-height: inherit; display: grid; grid-template-columns: minmax(0, 0.78fr) minmax(340px, 1.1fr); gap: clamp(26px, 4vw, 70px); align-items: center; padding: clamp(174px, 11vw, 206px) clamp(28px, 5vw, 74px) clamp(148px, 11vw, 176px); }
         .impact-title { font: 900 clamp(58px, 7.4vw, 118px) var(--sans); line-height: 0.86; letter-spacing: 0; text-transform: uppercase; }
         .impact-title span { display: block; color: var(--white); }
         .impact-title .red { color: var(--red); text-shadow: 0 0 34px rgba(255,0,0,0.28); }
@@ -284,19 +290,33 @@
         .impact-console span { color: var(--gray); font: 700 8px var(--mono); letter-spacing: 1.5px; text-transform: uppercase; }
         .impact-console strong { color: var(--white); font: 900 clamp(18px, 2vw, 30px) var(--sans); letter-spacing: 0; text-transform: uppercase; }
         .impact-reel { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; min-height: 470px; transform: rotate(-2deg); }
-        .impact-card { position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.15); background: #050505; transform: translateY(var(--lift, 0)); transition: transform 0.7s var(--ease-expo), border-color 0.7s var(--ease-expo), filter 0.7s var(--ease-expo); }
+        .impact-card { position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.15); background: #050505; cursor: pointer; transform: translateY(var(--lift, 0)); transition: transform 0.7s var(--ease-expo), border-color 0.7s var(--ease-expo), filter 0.7s var(--ease-expo), opacity 0.7s var(--ease-expo); }
         .impact-card:nth-child(2) { --lift: -34px; }
         .impact-card:nth-child(3) { --lift: 22px; }
-        .impact-card img { width: 100%; height: 100%; min-height: 470px; object-fit: cover; filter: grayscale(1) contrast(1.25) brightness(0.62); transform: scale(1.08); transition: transform 1.1s var(--ease-expo), filter 1.1s var(--ease-expo); }
+        .impact-card img { width: 100%; height: 100%; min-height: 470px; object-fit: cover; filter: grayscale(1) contrast(1.25) brightness(0.62); transform: translate3d(var(--card-x, 0), var(--card-y, 0), 0) scale(1.08); transition: transform 1.1s var(--ease-expo), filter 1.1s var(--ease-expo); will-change: transform; }
         .impact-card::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.82)), radial-gradient(circle at 50% 24%, rgba(255,0,0,0.18), transparent 42%); mix-blend-mode: screen; pointer-events: none; }
         .impact-card::after { content: ''; position: absolute; inset: 0; z-index: 2; background: repeating-linear-gradient(180deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 7px); opacity: 0.28; pointer-events: none; }
         .impact-card:hover { transform: translateY(calc(var(--lift, 0) - 14px)); border-color: rgba(255,0,0,0.48); }
         .impact-card:hover img { filter: grayscale(0.18) contrast(1.18) brightness(0.86); transform: scale(1.02); }
+        .impact-card.is-active { transform: translateY(calc(var(--lift, 0) - 18px)) scale(1.018); border-color: rgba(255,0,0,0.68); box-shadow: 0 24px 70px rgba(0,0,0,0.58), 0 0 42px rgba(255,0,0,0.13); }
+        .impact-card.is-active img { filter: grayscale(0.08) contrast(1.12) brightness(0.92); transform: translate3d(var(--card-x, 0), var(--card-y, 0), 0) scale(1.025); }
+        .impact-card:not(.is-active) { opacity: 0.72; filter: saturate(0.72); }
+        .impact-card:focus-visible { outline: 2px solid var(--red); outline-offset: 5px; }
         .impact-card-label { position: absolute; left: 16px; right: 16px; bottom: 16px; z-index: 3; display: flex; justify-content: space-between; align-items: flex-end; gap: 14px; color: rgba(255,255,255,0.9); font: 900 12px var(--mono); letter-spacing: 1.5px; text-transform: uppercase; }
         .impact-card-label span { color: var(--red); }
         .impact-orbit { position: absolute; right: clamp(28px, 5vw, 74px); top: 164px; width: 120px; aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); display: grid; place-items: center; color: var(--red); font: 900 18px var(--sans); box-shadow: 0 0 32px rgba(255,0,0,0.12), inset 0 0 28px rgba(255,255,255,0.04); }
         .impact-orbit::before, .impact-orbit::after { content: ''; position: absolute; inset: -14px; border-radius: 50%; border: 1px dashed rgba(255,0,0,0.28); animation: eyeOrbit 16s linear infinite; }
         .impact-orbit::after { inset: 15px; border-color: rgba(255,255,255,0.16); animation-duration: 11s; animation-direction: reverse; }
+        .impact-transport { position: absolute; left: 28px; right: 28px; bottom: 24px; z-index: 5; min-height: 72px; display: grid; grid-template-columns: 44px minmax(150px, 0.62fr) minmax(180px, 1fr) auto 44px 44px; align-items: center; gap: 14px; padding: 12px 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(5,5,5,0.68); box-shadow: 0 24px 70px rgba(0,0,0,0.54), inset 0 1px rgba(255,255,255,0.08); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+        .impact-transport button { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,0.14); border-radius: 50%; background: rgba(255,255,255,0.035); color: rgba(255,255,255,0.86); font: 900 16px var(--mono); cursor: pointer; transition: transform 0.32s var(--ease-expo), border-color 0.32s var(--ease-expo), background 0.32s var(--ease-expo), color 0.32s var(--ease-expo); }
+        .impact-transport button:hover, .impact-transport button:focus-visible { outline: none; transform: scale(1.07); border-color: rgba(255,0,0,0.64); background: rgba(255,0,0,0.09); color: #fff; }
+        .impact-transport-copy { min-width: 0; display: grid; gap: 4px; }
+        .impact-transport-copy span { color: var(--red); font: 900 8px var(--mono); letter-spacing: 0.16em; text-transform: uppercase; }
+        .impact-transport-copy strong { overflow: hidden; color: rgba(255,255,255,0.92); font: 900 clamp(15px, 1.55vw, 22px) var(--sans); line-height: 1.1; text-overflow: ellipsis; white-space: nowrap; }
+        .impact-transport-track { position: relative; height: 2px; overflow: hidden; background: rgba(255,255,255,0.15); }
+        .impact-transport-track span { position: absolute; inset: 0; background: linear-gradient(90deg, var(--red), rgba(255,255,255,0.92)); transform: scaleX(0); transform-origin: left center; will-change: transform; }
+        .impact-transport-count { color: rgba(255,255,255,0.62); font: 900 10px var(--mono); letter-spacing: 0.12em; white-space: nowrap; }
+        .impact-stage.focus-trigger:hover { transform: none; }
 
         /* =========================================
            6. 基础设施 BENTO GRID
@@ -533,8 +553,14 @@
         .acp-lightbox-close { position: absolute; top: 18px; right: 18px; z-index: 3; }
         body.acp-lightbox-open { overflow: hidden; }
 
-        .portfolio-video-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-        .portfolio-video-card { position: relative; min-height: 460px; overflow: hidden; border: 1px solid rgba(255,255,255,0.14); background: radial-gradient(circle at 70% 20%, rgba(255,0,0,0.12), transparent 30%), #050505; isolation: isolate; cursor: default; }
+        .portfolio-video-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(14px, 1.5vw, 22px); align-items: stretch; }
+        .portfolio-video-card { position: relative; grid-column: span 4; min-height: clamp(430px, 36vw, 620px); overflow: hidden; border: 1px solid rgba(255,255,255,0.14); background: radial-gradient(circle at 70% 20%, rgba(255,0,0,0.12), transparent 30%), #050505; isolation: isolate; cursor: default; transform: translateZ(0); }
+        .portfolio-video-card:nth-child(1) { grid-column: span 5; }
+        .portfolio-video-card:nth-child(2) { grid-column: span 4; }
+        .portfolio-video-card:nth-child(3) { grid-column: span 3; }
+        #edit-portfolio .portfolio-video-card:nth-child(1) { grid-column: span 6; }
+        #edit-portfolio .portfolio-video-card:nth-child(2),
+        #edit-portfolio .portfolio-video-card:nth-child(3) { grid-column: span 3; }
         .portfolio-video-card.video-trigger { cursor: pointer; }
         .portfolio-video-card::before { content: ''; position: absolute; inset: 0; z-index: 1; background-image: linear-gradient(rgba(255,255,255,0.026) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px); background-size: 42px 42px; opacity: 0.54; pointer-events: none; }
         .portfolio-video-card::after { content: ''; position: absolute; inset: auto 24px 24px auto; z-index: 3; width: 54px; aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(255,255,255,0.58); box-shadow: 0 0 30px rgba(255,0,0,0.16), inset 0 0 18px rgba(255,255,255,0.06); opacity: 0.72; pointer-events: none; transition: transform 0.55s var(--ease-expo), border-color 0.55s var(--ease-expo); }
@@ -543,8 +569,11 @@
         .portfolio-video-frame video, .portfolio-video-frame img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.14) brightness(0.36); opacity: 0.64; transform: scale(1.02); transition: transform 1s var(--ease-expo), filter 1s var(--ease-expo), opacity 1s var(--ease-expo); }
         .portfolio-video-card:hover .portfolio-video-frame video, .portfolio-video-card:hover .portfolio-video-frame img,
         .portfolio-video-card.is-playing .portfolio-video-frame video { transform: scale(1.055); filter: grayscale(0.12) contrast(1.08) brightness(0.78); opacity: 0.94; }
+        .portfolio-video-card.video-trigger:hover .portfolio-card-open { opacity: 1; transform: translateY(0); border-color: rgba(255,0,0,0.48); color: var(--white); }
         .portfolio-video-card.is-playing::after { border-color: rgba(255,0,0,0.86); box-shadow: 0 0 34px rgba(255,0,0,0.28), inset 0 0 20px rgba(255,255,255,0.08); }
         .portfolio-video-card.is-playing .portfolio-video-title { text-shadow: 0 0 24px rgba(255,0,0,0.22); }
+        .portfolio-card-open { position: absolute; top: 20px; right: 20px; z-index: 4; min-height: 34px; display: inline-flex; align-items: center; gap: 8px; padding: 0 12px; border: 1px solid rgba(255,255,255,0.16); background: rgba(0,0,0,0.34); color: rgba(255,255,255,0.62); font: 900 9px var(--mono); letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.78; transform: translateY(-3px); transition: opacity 0.36s var(--ease-expo), transform 0.36s var(--ease-expo), border-color 0.36s var(--ease-expo), color 0.36s var(--ease-expo); pointer-events: none; }
+        .portfolio-card-open::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--red); box-shadow: 0 0 16px rgba(255,0,0,0.44); }
         .portfolio-video-placeholder { position: absolute; inset: 0; display: grid; place-items: center; color: rgba(255,255,255,0.46); font: 900 12px var(--mono); letter-spacing: 0.18em; text-transform: uppercase; background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent 42%, rgba(255,0,0,0.08)); }
         .portfolio-video-content { position: absolute; inset: auto 24px 24px 24px; z-index: 2; display: grid; gap: 18px; }
         .portfolio-video-tag { color: var(--red); font: 900 10px var(--mono); letter-spacing: 0.18em; text-transform: uppercase; }
@@ -553,6 +582,27 @@
         .portfolio-video-meta div { border-top: 1px solid rgba(255,255,255,0.18); padding-top: 10px; }
         .portfolio-video-meta span { display: block; color: rgba(255,255,255,0.44); font: 800 8px var(--mono); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 4px; }
         .portfolio-video-meta strong { color: rgba(255,255,255,0.86); font: 900 11px var(--sans); text-transform: uppercase; }
+
+        .portfolio-cinema { position: fixed; inset: 0; z-index: 100030; display: grid; place-items: center; background: rgba(0,0,0,0.9); opacity: 0; visibility: hidden; pointer-events: none; overflow: hidden; isolation: isolate; }
+        body.portfolio-cinema-open { overflow: hidden; }
+        .portfolio-cinema.is-active { opacity: 1; visibility: visible; pointer-events: auto; }
+        .portfolio-cinema::before { content: ''; position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px); background-size: 54px 54px; opacity: 0.52; pointer-events: none; }
+        .portfolio-cinema::after { content: ''; position: absolute; inset: 0; z-index: 1; background: radial-gradient(circle at var(--cinema-x, 50%) var(--cinema-y, 50%), rgba(255,0,0,0.18), transparent 24%), radial-gradient(circle at 50% 50%, transparent 0 54%, rgba(0,0,0,0.62) 100%); opacity: 0.72; pointer-events: none; }
+        .portfolio-cinema-sweep { position: absolute; left: 0; right: 0; top: 50%; z-index: 4; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,0,0,0.86), rgba(255,255,255,0.9), rgba(255,0,0,0.86), transparent); transform: scaleX(0); transform-origin: center; box-shadow: 0 0 34px rgba(255,0,0,0.35); pointer-events: none; }
+        .portfolio-cinema-stage { position: absolute; inset: clamp(34px, 4vw, 64px); z-index: 2; display: grid; place-items: center; transform: translateZ(0); }
+        .portfolio-cinema-video { width: min(88vw, 1500px); height: min(74vh, 844px); object-fit: contain; background: #000; box-shadow: 0 40px 120px rgba(0,0,0,0.74), 0 0 0 1px rgba(255,255,255,0.14); clip-path: inset(50% 0 50% 0); will-change: transform, opacity, clip-path; }
+        .portfolio-cinema-info { position: absolute; left: clamp(22px, 5vw, 76px); bottom: clamp(24px, 5vw, 72px); z-index: 5; max-width: min(560px, calc(100vw - 44px)); display: grid; gap: 12px; pointer-events: none; }
+        .portfolio-cinema-tag { color: var(--red); font: 900 10px var(--mono); letter-spacing: 0.18em; text-transform: uppercase; }
+        .portfolio-cinema-title { margin: 0; color: var(--white); font: 900 clamp(34px, 5vw, 86px) var(--sans); line-height: 0.92; text-transform: uppercase; letter-spacing: 0; text-shadow: 0 24px 70px rgba(0,0,0,0.78); }
+        .portfolio-cinema-note { margin: 0; color: rgba(255,255,255,0.68); font: 800 clamp(11px, 1.1vw, 15px)/1.7 var(--mono); letter-spacing: 0.04em; text-transform: uppercase; }
+        .portfolio-cinema-close, .portfolio-cinema-nav { position: absolute; z-index: 6; border: 1px solid rgba(255,255,255,0.18); background: rgba(0,0,0,0.48); color: rgba(255,255,255,0.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); cursor: pointer; transition: transform 0.34s var(--ease-expo), border-color 0.34s var(--ease-expo), color 0.34s var(--ease-expo), background 0.34s var(--ease-expo); }
+        .portfolio-cinema-close { top: clamp(18px, 3vw, 36px); right: clamp(18px, 3vw, 42px); width: 48px; height: 48px; display: grid; place-items: center; font: 900 20px var(--mono); }
+        .portfolio-cinema-nav { top: 50%; width: 50px; height: 72px; display: grid; place-items: center; font: 900 18px var(--mono); transform: translateY(-50%); }
+        .portfolio-cinema-prev { left: clamp(14px, 3vw, 42px); }
+        .portfolio-cinema-next { right: clamp(14px, 3vw, 42px); }
+        .portfolio-cinema-close:hover, .portfolio-cinema-close:focus-visible,
+        .portfolio-cinema-nav:hover, .portfolio-cinema-nav:focus-visible { outline: none; transform: translateY(-2px); border-color: rgba(255,0,0,0.56); color: var(--white); background: rgba(255,0,0,0.1); }
+        .portfolio-cinema-nav:hover, .portfolio-cinema-nav:focus-visible { transform: translateY(-50%) scale(1.04); }
 
         /* =========================================
            11. ABOUT & FOOTER
@@ -625,6 +675,7 @@
             .impact-reel { min-height: 390px; transform: rotate(-1deg); }
             .impact-card img { min-height: 390px; }
             .impact-orbit { top: 68px; right: 24px; width: 96px; }
+            .impact-transport { left: 18px; right: 18px; grid-template-columns: 44px minmax(130px, 0.7fr) minmax(140px, 1fr) auto 44px 44px; gap: 10px; }
             .section-padding { padding: 100px 28px; }
             .section-heading-row { flex-direction: column; align-items: flex-start; gap: 18px; }
             .bento-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: minmax(220px, auto); }
@@ -644,7 +695,11 @@
             .acp-wheel-stage { min-height: 520px; height: 520px; }
             .acp-wheel { width: min(86vw, 720px); height: 430px; }
             .portfolio-video-grid { grid-template-columns: 1fr; }
-            .portfolio-video-card { min-height: 430px; }
+            .portfolio-video-card, #edit-portfolio .portfolio-video-card { grid-column: 1 / -1 !important; min-height: 430px; }
+            .portfolio-cinema-stage { inset: 72px 20px 112px; }
+            .portfolio-cinema-video { width: 100%; height: min(58vh, 620px); }
+            .portfolio-cinema-info { left: 20px; right: 20px; bottom: 26px; }
+            .portfolio-cinema-nav { display: none; }
         }
 
         @media (max-width: 640px) {
@@ -713,6 +768,15 @@
             .impact-card:nth-child(2), .impact-card:nth-child(3) { --lift: 0; }
             .impact-card img { min-height: 310px; }
             .impact-orbit { top: 56px; right: 18px; width: 76px; font-size: 14px; opacity: 0.7; }
+            .impact-kinetic { top: 45%; left: 0; right: 0; }
+            .impact-kinetic span { font-size: clamp(40px, 14vw, 62px); opacity: 0.82; color: rgba(255,255,255,0.08); }
+            .impact-layout { padding-bottom: 158px; }
+            .impact-transport { left: 12px; right: 12px; bottom: 12px; min-height: 112px; grid-template-columns: 38px minmax(0, 1fr) 38px 38px; gap: 8px; padding: 10px; }
+            .impact-transport button { width: 38px; height: 38px; }
+            .impact-transport-copy { grid-column: 2; }
+            .impact-transport-copy strong { overflow: visible; font-size: 13px; line-height: 1.08; white-space: normal; text-overflow: clip; }
+            .impact-transport-track { grid-column: 1 / -1; grid-row: 2; }
+            .impact-transport-count { display: none; }
             .section-padding { padding: 76px 20px; }
             .section-label { font-size: 10px; letter-spacing: 2px; }
             .section-title { font-size: clamp(30px, 12vw, 52px); }
@@ -760,9 +824,11 @@
             .acp-lightbox-media { min-height: 52vh; }
             .acp-lightbox-info { border-left: 0; border-top: 1px solid rgba(255,255,255,0.1); padding: 20px; }
             .acp-lightbox-close { top: 12px; right: 12px; }
-            .portfolio-video-card { min-height: 390px; }
+            .portfolio-video-card, #edit-portfolio .portfolio-video-card { min-height: 390px; }
             .portfolio-video-content { left: 18px; right: 18px; bottom: 18px; }
             .portfolio-video-meta { grid-template-columns: 1fr; gap: 6px; }
+            .portfolio-cinema-title { font-size: clamp(30px, 12vw, 52px); }
+            .portfolio-cinema-close { width: 44px; height: 44px; }
             .about-proofline { grid-template-columns: 1fr; }
             .about-proof { border-right: 0; border-bottom: 1px solid var(--line); }
             .about-proof:last-child { border-bottom: 0; }
@@ -844,7 +910,7 @@
 <div class="hud-corner top-left" aria-hidden="true"></div><div class="hud-corner top-right" aria-hidden="true"></div>
 <div class="hud-corner bottom-left" aria-hidden="true"></div><div class="hud-corner bottom-right" aria-hidden="true"></div>
 <div class="hud-timecode" id="timecode">REC 00:00:00:00</div>
-<div class="hud-coordinates">SYS.VER_26.05 // SHANGHAI</div>
+<div class="hud-coordinates">SYS.VER_26.05 // NANJING</div>
 <div class="progress-line" id="progressLine"></div>
 <div class="flash-frame" id="flashFrame" aria-hidden="true"><span></span><span></span><span></span></div>
 <div class="loader-cursor-field" id="loaderCursor" aria-hidden="true">
@@ -860,20 +926,20 @@
         <button class="loader-lang-btn" type="button" data-loader-lang="en" aria-pressed="false">EN</button>
         <button class="loader-lang-btn is-active" type="button" data-loader-lang="zh" aria-pressed="true">中</button>
     </div>
-    <div class="loader-futuristic-stage" id="loaderFuturisticStage" data-texturemap="https://i.postimg.cc/XYwvXN8D/img-4.png" data-depthmap="https://i.postimg.cc/2SHKQh2q/raw-4.webp" aria-hidden="true">
-        <img src="https://i.postimg.cc/XYwvXN8D/img-4.png" alt="" decoding="async">
-        <img class="loader-depth-map" src="https://i.postimg.cc/2SHKQh2q/raw-4.webp" alt="" decoding="async">
+    <div class="loader-futuristic-stage" id="loaderFuturisticStage" data-texturemap="assets/opening/heart-texture.png" data-depthmap="assets/opening/heart-depth.webp" aria-hidden="true">
+        <img src="assets/opening/heart-texture.png" alt="" decoding="async">
+        <img class="loader-depth-map" src="assets/opening/heart-depth.webp" alt="" decoding="async">
         <div class="loader-heart-pulse" aria-hidden="true"></div>
         <canvas id="loaderDepthCanvas"></canvas>
         <div class="loader-scan-beam"></div>
         <div class="loader-futuristic-copy">
-            <div class="loader-futuristic-eyebrow">FUTURISTIC HERO / OPENING SCENE</div>
-            <div class="loader-futuristic-title" data-loader-lang="zh" aria-label="重塑 影像 之梦">
-                <span>重塑</span>
-                <span>影像</span>
-                <span>之梦</span>
+            <div class="loader-futuristic-eyebrow">POST INTERNSHIP / OPENING SCENE</div>
+            <div class="loader-futuristic-title" data-loader-lang="zh" aria-label="认真 做好 每一帧">
+                <span>认真</span>
+                <span>做好</span>
+                <span>每一帧</span>
             </div>
-            <div class="loader-futuristic-subtitle">以后期制作构建下一代视觉表达。</div>
+            <div class="loader-futuristic-subtitle">剪辑、调色与 AI 协同的后期作品集。</div>
             <button class="loader-explore-cue" id="loaderEnter" type="button" aria-label="进入作品集" disabled>进入</button>
         </div>
     </div>
@@ -910,22 +976,22 @@
     <canvas id="binary-canvas" aria-hidden="true" style="position:absolute;inset:0;z-index:0;opacity:.18;pointer-events:none;"></canvas>
     <div class="hero-layout">
         <div class="hero-left">
-            <span class="section-label" data-i18n="hero-label" data-zh="探索影像的边界 2026" data-en="EXPLORING VISUAL BOUNDARIES 2026">探索影像的边界 2026</span>
+            <span class="section-label" data-i18n="hero-label" data-zh="影视后期实习申请 2026" data-en="POST-PRODUCTION INTERNSHIP 2026">影视后期实习申请 2026</span>
             <h1 class="hero-title cyber-glitch">
-                <span class="text-mask"><span class="title-line title-line-1 text-inner" data-i18n="title-1" data-zh="敬畏每一次" data-en="REVERENCE FOR">敬畏每一次</span></span>
-                <span class="text-mask"><span class="title-line title-line-2 hero-red-text text-inner" data-i18n="title-2" data-zh="光影重塑" data-en="VISUAL RESHAPE">光影重塑</span></span>
+                <span class="text-mask"><span class="title-line title-line-1 text-inner" data-i18n="title-1" data-zh="敬畏每一帧" data-en="RESPECT EVERY FRAME">敬畏每一帧</span></span>
+                <span class="text-mask"><span class="title-line title-line-2 hero-red-text text-inner" data-i18n="title-2" data-zh="让影像成立" data-en="MAKE IMAGES WORK">让影像成立</span></span>
             </h1>
-            <p class="hero-desc" data-i18n="hero-desc" data-zh="这是一份面向后期制作岗位的作品集。重点呈现调色判断、剪辑节奏、软件能力和赛事经历，用清晰的结构帮助面试官快速判断我的学习速度、审美基础与交付潜力。" data-en="This portfolio is built for a post-production interview. It presents grading judgment, editing rhythm, software discipline, and competition experience so interviewers can quickly read my learning speed, visual foundation, and delivery potential.">这是一份面向后期制作岗位的作品集。重点呈现调色判断、剪辑节奏、软件能力和赛事经历，用清晰的结构帮助面试官快速判断我的学习速度、审美基础与交付潜力。</p>
-            <div class="hero-scramble" aria-live="polite"><span class="hero-scramble-target" id="heroScrambleText">逐帧校准 / 后期系统就绪</span></div>
+            <p class="hero-desc" data-i18n="hero-desc" data-zh="这份作品集面向影视飓风后期实习岗位：以调色样片、剪辑方向、ACP 赛事经历和工作流能力，呈现我对素材整理、粗剪节奏、色彩管理、AI 辅助流程与稳定交付的理解。希望从基础执行做起，在真实项目里证明学习速度和审美判断。" data-en="Built for a MediaStorm post-production internship. It presents grading reels, editing direction, ACP competition experience, and workflow discipline across media organization, rough cuts, pacing, color management, AI-assisted post workflow, and reliable delivery. I am ready to start from fundamental execution and prove learning speed and visual judgment on real projects.">这份作品集面向影视飓风后期实习岗位：以调色样片、剪辑方向、ACP 赛事经历和工作流能力，呈现我对素材整理、粗剪节奏、色彩管理、AI 辅助流程与稳定交付的理解。希望从基础执行做起，在真实项目里证明学习速度和审美判断。</p>
+            <div class="hero-scramble" aria-live="polite"><span class="hero-scramble-target" id="heroScrambleText">素材入库 / 后期系统就绪</span></div>
             <div class="hero-actions">
-                <a class="hero-cta" href="#color-portfolio" data-i18n="hero-cta-work" data-zh="查看核心作品" data-en="View Core Portfolio">查看核心作品</a>
-                <a class="hero-cta secondary" href="#contact" data-i18n="hero-cta-contact" data-zh="建立合作连接" data-en="Establish Contact">建立合作连接</a>
+                <a class="hero-cta" href="#color-portfolio" data-i18n="hero-cta-work" data-zh="查看调色样片" data-en="View Grading Reels">查看调色样片</a>
+                <a class="hero-cta secondary" href="#contact" data-i18n="hero-cta-contact" data-zh="发送面试联系" data-en="Contact for Interview">发送面试联系</a>
             </div>
             <div class="hero-manifest" aria-label="创作能力摘要">
-                <div class="manifest-cell"><span class="manifest-label" data-i18n="manifest-role-label" data-zh="职责" data-en="ROLE">职责</span><strong class="manifest-value" data-i18n="manifest-role" data-zh="剪辑师" data-en="EDITOR">剪辑师</strong></div>
-                <div class="manifest-cell"><span class="manifest-label" data-i18n="manifest-pipeline-label" data-zh="管线" data-en="PIPELINE">管线</span><strong class="manifest-value accent">DWG / ACES</strong></div>
-                <div class="manifest-cell"><span class="manifest-label" data-i18n="manifest-focus-label" data-zh="专注" data-en="FOCUS">专注</span><strong class="manifest-value" data-i18n="manifest-focus" data-zh="剪辑 + 调色" data-en="CUT + GRADE">剪辑 + 调色</strong></div>
-                <div class="manifest-cell"><span class="manifest-label" data-i18n="manifest-base-label" data-zh="城市" data-en="BASE">城市</span><strong class="manifest-value" data-i18n="manifest-base" data-zh="上海" data-en="SHANGHAI">上海</strong></div>
+                <div class="manifest-cell"><span class="manifest-label" data-i18n="manifest-role-label" data-zh="目标" data-en="TARGET">目标</span><strong class="manifest-value" data-i18n="manifest-role" data-zh="后期实习" data-en="POST INTERN">后期实习</strong></div>
+                <div class="manifest-cell"><span class="manifest-label" data-i18n="manifest-pipeline-label" data-zh="软件" data-en="TOOLS">软件</span><strong class="manifest-value accent">Resolve / PR / AI</strong></div>
+                <div class="manifest-cell"><span class="manifest-label" data-i18n="manifest-focus-label" data-zh="方向" data-en="FOCUS">方向</span><strong class="manifest-value" data-i18n="manifest-focus" data-zh="调色 + 剪辑" data-en="GRADE + EDIT">调色 + 剪辑</strong></div>
+                <div class="manifest-cell"><span class="manifest-label" data-i18n="manifest-base-label" data-zh="城市" data-en="BASE">城市</span><strong class="manifest-value" data-i18n="manifest-base" data-zh="南京" data-en="NANJING">南京</strong></div>
             </div>
         </div>
         <div class="hero-right">
@@ -946,21 +1012,21 @@
                 </div>
             </div>
             <div class="tech-readout">
-                <span><i class="alert" data-i18n="tech-core" data-zh="> 核心引擎运行中_" data-en="> CORE ENGINE RUNNING_">> 核心引擎运行中_</i></span><br>
-                <span><i><span data-i18n="tech-resolution" data-zh="> 分辨率:" data-en="> RESOLUTION:">> 分辨率:</span> <span class="highlight">8K_RAW / 120FPS</span></i></span><br>
-                <span><i><span data-i18n="tech-color-space" data-zh="> 色彩空间:" data-en="> COLOR SPACE:">> 色彩空间:</span> <span class="highlight">LOG→DWG→REC.709</span></i></span><br>
-                <span><i><span data-i18n="tech-sensor" data-zh="> 感应:" data-en="> SENSOR:">> 感应:</span> <span class="highlight" data-i18n="tech-sensor-value" data-zh="视线鼠标锁定" data-en="RETINA MOUSE-LOCK">视线鼠标锁定</span></i></span>
+                <span><i class="alert" data-i18n="tech-core" data-zh="> 候选人系统在线_" data-en="> CANDIDATE SYSTEM ONLINE_">> 候选人系统在线_</i></span><br>
+                <span><i><span data-i18n="tech-resolution" data-zh="> 后期栈:" data-en="> POST STACK:">> 后期栈:</span> <span class="highlight">Resolve / PR / AE</span></i></span><br>
+                <span><i><span data-i18n="tech-color-space" data-zh="> 调色路径:" data-en="> COLOR PATH:">> 调色路径:</span> <span class="highlight">LOG→DWG→REC.709</span></i></span><br>
+                <span><i><span data-i18n="tech-sensor" data-zh="> AI 协同:" data-en="> AI ASSIST:">> AI 协同:</span> <span class="highlight" data-i18n="tech-sensor-value" data-zh="参考拆解 / 字幕辅助 / 素材检索" data-en="REFERENCE / CAPTIONS / MEDIA SEARCH">参考拆解 / 字幕辅助 / 素材检索</span></i></span>
             </div>
             <div class="codegrid-panel focus-trigger" id="codegridPanel" aria-label="实时后期代码网格">
-                <div class="codegrid-head"><span data-i18n="codegrid-head" data-zh="代码网格 / 实时后期栈" data-en="CODEGRID / LIVE POST STACK">代码网格 / 实时后期栈</span><span id="codegridClock">00:00:00</span></div>
-                <div class="codegrid-cell is-hot" data-codegrid="cache"><span data-i18n="codegrid-cache" data-zh="缓存" data-en="CACHE">缓存</span><strong>87%</strong></div>
-                <div class="codegrid-cell is-cyan" data-codegrid="cut"><span data-i18n="codegrid-cut" data-zh="剪辑" data-en="CUT">剪辑</span><strong>23.976</strong></div>
+                <div class="codegrid-head"><span data-i18n="codegrid-head" data-zh="后期数据面板 / AI 协同栈" data-en="CODEGRID / AI POST STACK">后期数据面板 / AI 协同栈</span><span id="codegridClock">00:00:00</span></div>
+                <div class="codegrid-cell is-hot" data-codegrid="cache"><span data-i18n="codegrid-cache" data-zh="素材整理" data-en="MEDIA">素材整理</span><strong>87%</strong></div>
+                <div class="codegrid-cell is-cyan" data-codegrid="cut"><span data-i18n="codegrid-cut" data-zh="粗剪节奏" data-en="ROUGH CUT">粗剪节奏</span><strong>23.976</strong></div>
                 <div class="codegrid-cell" data-codegrid="aces"><span>ACES</span><strong>DWG</strong></div>
-                <div class="codegrid-cell" data-codegrid="lut"><span>LUT</span><strong data-i18n="codegrid-lut-on" data-zh="开启" data-en="ON">开启</strong></div>
-                <div class="codegrid-cell" data-codegrid="mask"><span data-i18n="codegrid-mask" data-zh="遮罩" data-en="MASK">遮罩</span><strong>12</strong></div>
+                <div class="codegrid-cell" data-codegrid="lut"><span>LUT</span><strong data-i18n="codegrid-lut-on" data-zh="校准" data-en="CALIBRATED">校准</strong></div>
+                <div class="codegrid-cell" data-codegrid="mask"><span data-i18n="codegrid-mask" data-zh="字幕" data-en="CAPTIONS">字幕</span><strong>12</strong></div>
                 <div class="codegrid-cell is-cyan" data-codegrid="scope"><span data-i18n="codegrid-scopes" data-zh="示波器" data-en="SCOPES">示波器</span><strong data-i18n="codegrid-sync" data-zh="同步" data-en="SYNC">同步</strong></div>
-                <div class="codegrid-cell" data-codegrid="grain"><span data-i18n="codegrid-grain" data-zh="颗粒" data-en="GRAIN">颗粒</span><strong>16MM</strong></div>
-                <div class="codegrid-cell is-hot" data-codegrid="export"><span data-i18n="codegrid-export" data-zh="导出" data-en="EXPORT">导出</span><strong>REC.709</strong></div>
+                <div class="codegrid-cell" data-codegrid="grain"><span data-i18n="codegrid-grain" data-zh="质感" data-en="TEXTURE">质感</span><strong>16MM</strong></div>
+                <div class="codegrid-cell is-hot" data-codegrid="export"><span data-i18n="codegrid-export" data-zh="交付" data-en="DELIVERY">交付</span><strong>REC.709</strong></div>
             </div>
         </div>
     </div>
@@ -969,33 +1035,35 @@
 <section class="portfolio-core" id="color-portfolio" aria-label="视频调色作品集">
     <div class="portfolio-core-head gsap-reveal">
         <div>
-            <span class="section-label" data-i18n="color-work-label" data-zh="视频调色作品集" data-en="COLOR GRADING REELS">视频调色作品集</span>
-            <h2 class="portfolio-core-title"><span data-i18n="color-work-title-1" data-zh="视频调色" data-en="COLOR">视频调色</span><br><span class="red" data-i18n="color-work-title-2" data-zh="作品集" data-en="GRADING REELS">作品集</span></h2>
+            <span class="section-label" data-i18n="color-work-label" data-zh="调色视频作品集" data-en="COLOR GRADING REELS">调色视频作品集</span>
+            <h2 class="portfolio-core-title"><span data-i18n="color-work-title-1" data-zh="调色" data-en="COLOR">调色</span><br><span class="red" data-i18n="color-work-title-2" data-zh="样片" data-en="GRADING REELS">样片</span></h2>
         </div>
-        <p class="portfolio-core-kicker" data-i18n="color-work-kicker" data-zh="两支调色样片展示风景与城市影像的色彩控制、清透度和交付稳定性。点击卡片即可播放。" data-en="Two grading reels show color control, clarity, and delivery discipline across landscape and city footage. Click a card to play.">两支调色样片展示风景与城市影像的色彩控制、清透度和交付稳定性。点击卡片即可播放。</p>
+        <p class="portfolio-core-kicker" data-i18n="color-work-kicker" data-zh="两支真实视频用于呈现我对曝光、层次、氛围和 Rec.709 交付的判断。适合面试官快速查看调色方向与画面稳定性，点击卡片可进入大画幅播放。" data-en="Two real video reels present my judgment around exposure, tonal separation, atmosphere, and Rec.709 delivery. They are built for fast interview review, with each card opening into a full cinematic playback view.">两支真实视频用于呈现我对曝光、层次、氛围和 Rec.709 交付的判断。适合面试官快速查看调色方向与画面稳定性，点击卡片可进入大画幅播放。</p>
     </div>
     <div class="portfolio-video-grid">
-        <article class="portfolio-video-card focus-trigger video-trigger gsap-reveal" data-video-slot="color-grade-01" tabindex="0" role="button" aria-pressed="false" aria-label="播放风景调色作品">
-            <div class="portfolio-video-frame"><video src="assets/videos/landscape-grade-reel.mp4" poster="assets/videos/landscape-grade-reel.jpg" preload="metadata" muted playsinline loop aria-label="风景调色作品视频"></video></div>
+        <article class="portfolio-video-card focus-trigger video-trigger gsap-reveal" data-video-slot="color-grade-01" data-cinema-video="assets/videos/landscape-grade-reel.mp4" data-cinema-poster="assets/videos/landscape-grade-reel.jpg" data-cinema-tag-zh="调色 01 / 风景" data-cinema-tag-en="COLOR 01 / LANDSCAPE GRADE" data-cinema-title-zh="风景调色样片" data-cinema-title-en="LANDSCAPE GRADE REEL" data-cinema-note-zh="围绕自然光、天空高光与冷暖关系进行克制调色，保持风景的清透度和真实质感。" data-cinema-note-en="Controlled grading around natural light, sky highlights, and warm-cool balance while preserving clarity and believable texture." tabindex="0" role="button" aria-haspopup="dialog" aria-label="打开风景调色样片">
+            <div class="portfolio-video-frame"><img src="assets/videos/landscape-grade-reel.jpg" alt="风景调色样片封面" loading="lazy" decoding="async"></div>
+            <span class="portfolio-card-open" data-i18n="open-cinema" data-zh="镜头切入" data-en="OPEN FRAME">镜头切入</span>
             <div class="portfolio-video-content">
-                <span class="portfolio-video-tag" data-i18n="color-card-1-tag" data-zh="COLOR 01 / 风景" data-en="COLOR 01 / LANDSCAPE">COLOR 01 / 风景</span>
-                <strong class="portfolio-video-title" data-i18n="color-card-1-title" data-zh="风景调色作品" data-en="LANDSCAPE GRADE REEL">风景调色作品</strong>
+                <span class="portfolio-video-tag" data-i18n="color-card-1-tag" data-zh="调色 01 / 风景" data-en="COLOR 01 / LANDSCAPE">调色 01 / 风景</span>
+                <strong class="portfolio-video-title" data-i18n="color-card-1-title" data-zh="风景调色样片" data-en="LANDSCAPE GRADE REEL">风景调色样片</strong>
                 <div class="portfolio-video-meta"><div><span data-i18n="meta-role" data-zh="职责" data-en="ROLE">职责</span><strong data-i18n="meta-color" data-zh="调色" data-en="COLOR">调色</strong></div><div><span data-i18n="meta-pipeline" data-zh="管线" data-en="PIPELINE">管线</span><strong>DWG</strong></div><div><span data-i18n="meta-delivery" data-zh="交付" data-en="DELIVERY">交付</span><strong>60S</strong></div></div>
             </div>
         </article>
-        <article class="portfolio-video-card focus-trigger video-trigger gsap-reveal" data-video-slot="color-grade-02" tabindex="0" role="button" aria-pressed="false" aria-label="播放城市调色作品">
-            <div class="portfolio-video-frame"><video src="assets/videos/city-grade-reel.mp4" poster="assets/videos/city-grade-reel.jpg" preload="metadata" muted playsinline loop aria-label="城市调色作品视频"></video></div>
+        <article class="portfolio-video-card focus-trigger video-trigger gsap-reveal" data-video-slot="color-grade-02" data-cinema-video="assets/videos/city-grade-reel.mp4" data-cinema-poster="assets/videos/city-grade-reel.jpg" data-cinema-tag-zh="调色 02 / 城市" data-cinema-tag-en="COLOR 02 / CITY GRADE" data-cinema-title-zh="城市调色样片" data-cinema-title-en="CITY GRADE REEL" data-cinema-note-zh="处理城市霓虹、建筑线条与人群运动的综合色彩关系，保持节奏、对比与 Rec.709 可交付性。" data-cinema-note-en="City grading across neon, architecture, and movement, balancing rhythm, contrast, and Rec.709 delivery readiness." tabindex="0" role="button" aria-haspopup="dialog" aria-label="打开城市调色样片">
+            <div class="portfolio-video-frame"><img src="assets/videos/city-grade-reel.jpg" alt="城市调色样片封面" loading="lazy" decoding="async"></div>
+            <span class="portfolio-card-open" data-i18n="open-cinema" data-zh="镜头切入" data-en="OPEN FRAME">镜头切入</span>
             <div class="portfolio-video-content">
-                <span class="portfolio-video-tag" data-i18n="color-card-2-tag" data-zh="COLOR 02 / 城市" data-en="COLOR 02 / CITY">COLOR 02 / 城市</span>
-                <strong class="portfolio-video-title" data-i18n="color-card-2-title" data-zh="城市调色作品" data-en="CITY GRADE REEL">城市调色作品</strong>
+                <span class="portfolio-video-tag" data-i18n="color-card-2-tag" data-zh="调色 02 / 城市" data-en="COLOR 02 / CITY">调色 02 / 城市</span>
+                <strong class="portfolio-video-title" data-i18n="color-card-2-title" data-zh="城市调色样片" data-en="CITY GRADE REEL">城市调色样片</strong>
                 <div class="portfolio-video-meta"><div><span data-i18n="meta-role" data-zh="职责" data-en="ROLE">职责</span><strong data-i18n="meta-color" data-zh="调色" data-en="COLOR">调色</strong></div><div><span data-i18n="meta-space" data-zh="色彩" data-en="SPACE">色彩</span><strong>REC.709</strong></div><div><span data-i18n="meta-delivery" data-zh="交付" data-en="DELIVERY">交付</span><strong>60S</strong></div></div>
             </div>
         </article>
         <article class="portfolio-video-card focus-trigger gsap-reveal" data-video-slot="color-grade-03">
-            <div class="portfolio-video-frame"><div class="portfolio-video-placeholder" data-i18n="color-card-3-placeholder" data-zh="预留作品位" data-en="RESERVED SLOT">预留作品位</div></div>
+            <div class="portfolio-video-frame"><div class="portfolio-video-placeholder" data-i18n="color-card-3-placeholder" data-zh="第三支调色样片" data-en="THIRD GRADE REEL">第三支调色样片</div></div>
             <div class="portfolio-video-content">
-                <span class="portfolio-video-tag" data-i18n="color-card-3-tag" data-zh="COLOR 03 / 预留" data-en="COLOR 03 / RESERVED">COLOR 03 / 预留</span>
-                <strong class="portfolio-video-title" data-i18n="color-card-3-title" data-zh="下一支精选" data-en="NEXT SELECTED REEL">下一支精选</strong>
+                <span class="portfolio-video-tag" data-i18n="color-card-3-tag" data-zh="调色 03 / 待更新" data-en="COLOR 03 / UPCOMING">调色 03 / 待更新</span>
+                <strong class="portfolio-video-title" data-i18n="color-card-3-title" data-zh="下一支精选调色" data-en="NEXT SELECTED GRADE">下一支精选调色</strong>
                 <div class="portfolio-video-meta"><div><span data-i18n="meta-role" data-zh="职责" data-en="ROLE">职责</span><strong data-i18n="meta-color" data-zh="调色" data-en="COLOR">调色</strong></div><div><span data-i18n="meta-format" data-zh="规格" data-en="FORMAT">规格</span><strong>16:9</strong></div><div><span data-i18n="meta-delivery" data-zh="交付" data-en="DELIVERY">交付</span><strong data-i18n="meta-reel" data-zh="样片" data-en="REEL">样片</strong></div></div>
             </div>
         </article>
@@ -1008,13 +1076,13 @@
             <span class="section-label" data-i18n="honors-label" data-zh="个人荣誉墙" data-en="HONORS WALL">个人荣誉墙</span>
             <h2 class="portfolio-core-title"><span data-i18n="honors-title-1" data-zh="ACP 国际" data-en="ACP WORLD">ACP 国际</span><br><span class="red" data-i18n="honors-title-2" data-zh="奖项履历" data-en="AWARD RECORD">奖项履历</span></h2>
         </div>
-        <p class="portfolio-core-kicker" data-i18n="honors-kicker" data-zh="2024 年，16 岁参加 ACP 世界大赛体系并获得国际奖项。真实照片与证书材料用于呈现软件基础、英文技术环境和公开评审经验。" data-en="In 2024, at age sixteen, I joined the ACP world competition track and earned international award experience. Real photos and certificate material show software fundamentals, English technical exposure, and public evaluation experience.">2024 年，16 岁参加 ACP 世界大赛体系并获得国际奖项。真实照片与证书材料用于呈现软件基础、英文技术环境和公开评审经验。</p>
+        <p class="portfolio-core-kicker" data-i18n="honors-kicker" data-zh="2024 年，16 岁参加 ACP 世界大赛体系并获得国际奖项。这里呈现的不是炫耀，而是早期接受标准化软件训练、英文技术环境和公开评审压力的真实证明。" data-en="In 2024, at age sixteen, I joined the ACP world competition track and earned international award experience. This is not decoration; it is proof of early standardized software training, English technical exposure, and public evaluation pressure.">2024 年，16 岁参加 ACP 世界大赛体系并获得国际奖项。这里呈现的不是炫耀，而是早期接受标准化软件训练、英文技术环境和公开评审压力的真实证明。</p>
     </div>
     <div class="acp-showcase focus-trigger gsap-reveal">
         <div class="acp-info">
             <span class="acp-badge" data-i18n="acp-badge" data-zh="ACP 世界大赛 / 2024" data-en="ACP WORLD COMPETITION / 2024">ACP 世界大赛 / 2024</span>
             <h3 class="acp-title"><span>Adobe</span><br>Certified Professional</h3>
-            <p class="acp-copy" data-i18n="acp-copy" data-zh="这段经历证明我很早就进入标准化、公开评审的学习场景，并持续把软件训练转化为影像表达能力。" data-en="This experience shows early exposure to standardized, publicly judged learning and a continued effort to turn software training into visual expression.">这段经历证明我很早就进入标准化、公开评审的学习场景，并持续把软件训练转化为影像表达能力。</p>
+            <p class="acp-copy" data-i18n="acp-copy" data-zh="这段经历让我更早理解软件能力必须转化为可靠作品：按规则完成、在压力下交付，并把学习成果变成可被他人检验的影像表达。" data-en="This experience taught me early that software skill has to become reliable work: finish by the rules, deliver under pressure, and turn learning into visual output that others can evaluate.">这段经历让我更早理解软件能力必须转化为可靠作品：按规则完成、在压力下交付，并把学习成果变成可被他人检验的影像表达。</p>
             <div class="acp-stats" aria-label="ACP 荣誉信息">
                 <div class="acp-stat"><span data-i18n="acp-stat-1-label" data-zh="参赛时间" data-en="EVENT YEAR">参赛时间</span><strong data-i18n="acp-stat-1" data-zh="2024 年" data-en="2024">2024 年</strong></div>
                 <div class="acp-stat"><span data-i18n="acp-stat-2-label" data-zh="当时年龄" data-en="AGE THEN">当时年龄</span><strong data-i18n="acp-stat-2" data-zh="16 岁" data-en="16">16 岁</strong></div>
@@ -1048,42 +1116,57 @@
             <span class="section-label" data-i18n="edit-work-label" data-zh="视频剪辑作品集" data-en="EDITING REELS">视频剪辑作品集</span>
             <h2 class="portfolio-core-title"><span data-i18n="edit-work-title-1" data-zh="视频剪辑" data-en="VIDEO">视频剪辑</span><br><span class="red" data-i18n="edit-work-title-2" data-zh="作品集" data-en="EDITING REELS">作品集</span></h2>
         </div>
-        <p class="portfolio-core-kicker" data-i18n="edit-work-kicker" data-zh="剪辑作品聚焦叙事逻辑、节奏控制与商业短片交付，展示素材组织和时间线判断能力。" data-en="The editing reels focus on narrative logic, rhythm control, and commercial short-form delivery, showing footage organization and timeline judgment.">剪辑作品聚焦叙事逻辑、节奏控制与商业短片交付，展示素材组织和时间线判断能力。</p>
+        <p class="portfolio-core-kicker" data-i18n="edit-work-kicker" data-zh="剪辑作品位将用于后续正式样片。方向聚焦影视飓风内容所需的素材整理、粗剪结构、BGM 与字幕节奏、信息压缩和产品/人物叙事。" data-en="These editing slots are reserved for upcoming finished reels, focused on media organization, rough-cut structure, BGM and caption rhythm, information compression, and product or character-driven storytelling.">剪辑作品位将用于后续正式样片。方向聚焦影视飓风内容所需的素材整理、粗剪结构、BGM 与字幕节奏、信息压缩和产品/人物叙事。</p>
     </div>
     <div class="portfolio-video-grid">
         <article class="portfolio-video-card focus-trigger gsap-reveal" data-video-slot="edit-reel-01">
-            <div class="portfolio-video-frame"><img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1200&auto=format&fit=crop" alt="产品剪辑视频封面位 01" loading="lazy" decoding="async"></div>
+            <div class="portfolio-video-frame"><div class="portfolio-video-placeholder" data-i18n="edit-card-1-placeholder" data-zh="粗剪结构样片预留" data-en="ROUGH CUT REEL RESERVED">粗剪结构样片预留</div></div>
             <div class="portfolio-video-content">
-                <span class="portfolio-video-tag" data-i18n="edit-card-1-tag" data-zh="EDIT 01 / 产品" data-en="EDIT 01 / PRODUCT">EDIT 01 / 产品</span>
-                <strong class="portfolio-video-title" data-i18n="edit-card-1-title" data-zh="产品剪辑作品" data-en="PRODUCT EDIT REEL">产品剪辑作品</strong>
-                <div class="portfolio-video-meta"><div><span data-i18n="meta-role" data-zh="职责" data-en="ROLE">职责</span><strong data-i18n="meta-edit" data-zh="剪辑" data-en="EDIT">剪辑</strong></div><div><span data-i18n="meta-rhythm" data-zh="节奏" data-en="RHYTHM">节奏</span><strong>23.976</strong></div><div><span data-i18n="meta-delivery" data-zh="交付" data-en="DELIVERY">交付</span><strong data-i18n="meta-reel" data-zh="样片" data-en="REEL">样片</strong></div></div>
+                <span class="portfolio-video-tag" data-i18n="edit-card-1-tag" data-zh="剪辑 01 / 粗剪" data-en="EDIT 01 / ROUGH CUT">剪辑 01 / 粗剪</span>
+                <strong class="portfolio-video-title" data-i18n="edit-card-1-title" data-zh="粗剪结构样片" data-en="ROUGH CUT STRUCTURE">粗剪结构样片</strong>
+                <div class="portfolio-video-meta"><div><span data-i18n="meta-role" data-zh="职责" data-en="ROLE">职责</span><strong data-i18n="meta-edit" data-zh="剪辑" data-en="EDIT">剪辑</strong></div><div><span data-i18n="meta-rhythm" data-zh="节奏" data-en="RHYTHM">节奏</span><strong>--</strong></div><div><span data-i18n="meta-delivery" data-zh="交付" data-en="DELIVERY">交付</span><strong data-i18n="meta-reel" data-zh="样片" data-en="REEL">样片</strong></div></div>
             </div>
         </article>
         <article class="portfolio-video-card focus-trigger gsap-reveal" data-video-slot="edit-reel-02">
-            <div class="portfolio-video-frame"><img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200&auto=format&fit=crop" alt="剧情剪辑视频封面位 02" loading="lazy" decoding="async"></div>
+            <div class="portfolio-video-frame"><div class="portfolio-video-placeholder" data-i18n="edit-card-2-placeholder" data-zh="产品节奏样片预留" data-en="PRODUCT RHYTHM REEL RESERVED">产品节奏样片预留</div></div>
             <div class="portfolio-video-content">
-                <span class="portfolio-video-tag" data-i18n="edit-card-2-tag" data-zh="EDIT 02 / 叙事" data-en="EDIT 02 / NARRATIVE">EDIT 02 / 叙事</span>
-                <strong class="portfolio-video-title" data-i18n="edit-card-2-title" data-zh="叙事剪辑作品" data-en="NARRATIVE CUT REEL">叙事剪辑作品</strong>
+                <span class="portfolio-video-tag" data-i18n="edit-card-2-tag" data-zh="剪辑 02 / 产品" data-en="EDIT 02 / PRODUCT">剪辑 02 / 产品</span>
+                <strong class="portfolio-video-title" data-i18n="edit-card-2-title" data-zh="产品节奏样片" data-en="PRODUCT RHYTHM CUT">产品节奏样片</strong>
                 <div class="portfolio-video-meta"><div><span data-i18n="meta-role" data-zh="职责" data-en="ROLE">职责</span><strong data-i18n="meta-edit" data-zh="剪辑" data-en="EDIT">剪辑</strong></div><div><span data-i18n="meta-logic" data-zh="逻辑" data-en="LOGIC">逻辑</span><strong data-i18n="meta-story" data-zh="叙事" data-en="STORY">叙事</strong></div><div><span data-i18n="meta-delivery" data-zh="交付" data-en="DELIVERY">交付</span><strong data-i18n="meta-reel" data-zh="样片" data-en="REEL">样片</strong></div></div>
             </div>
         </article>
         <article class="portfolio-video-card focus-trigger gsap-reveal" data-video-slot="edit-reel-03">
-            <div class="portfolio-video-frame"><div class="portfolio-video-placeholder" data-i18n="edit-card-3-placeholder" data-zh="剪辑样片 03" data-en="EDIT REEL 03">剪辑样片 03</div></div>
+            <div class="portfolio-video-frame"><div class="portfolio-video-placeholder" data-i18n="edit-card-3-placeholder" data-zh="人物叙事样片预留" data-en="CHARACTER STORY REEL RESERVED">人物叙事样片预留</div></div>
             <div class="portfolio-video-content">
-                <span class="portfolio-video-tag" data-i18n="edit-card-3-tag" data-zh="EDIT 03 / 样片" data-en="EDIT 03 / SHOWREEL">EDIT 03 / 样片</span>
-                <strong class="portfolio-video-title" data-i18n="edit-card-3-title" data-zh="剪辑补充作品" data-en="EXTRA EDIT REEL">剪辑补充作品</strong>
+                <span class="portfolio-video-tag" data-i18n="edit-card-3-tag" data-zh="剪辑 03 / 人物" data-en="EDIT 03 / CHARACTER">剪辑 03 / 人物</span>
+                <strong class="portfolio-video-title" data-i18n="edit-card-3-title" data-zh="人物叙事样片" data-en="CHARACTER STORY CUT">人物叙事样片</strong>
                 <div class="portfolio-video-meta"><div><span data-i18n="meta-role" data-zh="职责" data-en="ROLE">职责</span><strong data-i18n="meta-edit" data-zh="剪辑" data-en="EDIT">剪辑</strong></div><div><span data-i18n="meta-format" data-zh="规格" data-en="FORMAT">规格</span><strong>16:9</strong></div><div><span data-i18n="meta-delivery" data-zh="交付" data-en="DELIVERY">交付</span><strong data-i18n="meta-reel" data-zh="样片" data-en="REEL">样片</strong></div></div>
             </div>
         </article>
     </div>
 </section>
 
+<div class="portfolio-cinema" id="portfolioCinema" aria-hidden="true">
+    <span class="portfolio-cinema-sweep" aria-hidden="true"></span>
+    <button class="portfolio-cinema-close" id="portfolioCinemaClose" type="button" aria-label="关闭作品播放">×</button>
+    <button class="portfolio-cinema-nav portfolio-cinema-prev" id="portfolioCinemaPrev" type="button" aria-label="上一个作品">‹</button>
+    <div class="portfolio-cinema-stage">
+        <video class="portfolio-cinema-video" id="portfolioCinemaVideo" controls playsinline preload="metadata"></video>
+    </div>
+    <div class="portfolio-cinema-info" aria-live="polite">
+        <span class="portfolio-cinema-tag" id="portfolioCinemaTag">COLOR 01</span>
+        <h3 class="portfolio-cinema-title" id="portfolioCinemaTitle">作品播放</h3>
+        <p class="portfolio-cinema-note" id="portfolioCinemaNote">点击卡片后进入完整作品播放。</p>
+    </div>
+    <button class="portfolio-cinema-nav portfolio-cinema-next" id="portfolioCinemaNext" type="button" aria-label="下一个作品">›</button>
+</div>
+
 <section class="studio-signal" aria-label="后期工作流信号">
     <div class="signal-grid">
         <div class="signal-cell live">
-            <span class="signal-eyebrow" data-i18n="signal-current-label" data-zh="当前模式" data-en="CURRENT MODE">当前模式</span>
-            <strong class="signal-main" data-i18n="signal-mode" data-zh="克制胜过噪声" data-en="CRAFT OVER NOISE">克制胜过噪声</strong>
-            <span class="signal-sub" data-i18n="signal-mode-sub" data-zh="以克制替代炫技" data-en="Precision before spectacle">以克制替代炫技</span>
+            <span class="signal-eyebrow" data-i18n="signal-current-label" data-zh="项目模式" data-en="PROJECT MODE">项目模式</span>
+            <strong class="signal-main" data-i18n="signal-mode" data-zh="先把内容讲清楚" data-en="CLARITY FIRST">先把内容讲清楚</strong>
+            <span class="signal-sub" data-i18n="signal-mode-sub" data-zh="效果服务信息与情绪" data-en="Effects serve message and emotion">效果服务信息与情绪</span>
         </div>
         <div class="signal-cell">
             <span class="signal-eyebrow" data-i18n="signal-color-label" data-zh="色彩路径" data-en="COLOR PATH">色彩路径</span>
@@ -1096,45 +1179,59 @@
             <span class="signal-sub" data-i18n="signal-nle-sub" data-zh="节奏、速度、连续性" data-en="Rhythm, pacing, continuity">节奏、速度、连续性</span>
         </div>
         <div class="signal-cell">
-            <span class="signal-eyebrow" data-i18n="signal-delivery-label" data-zh="交付" data-en="DELIVERY">交付</span>
-            <strong class="signal-main">REC.709</strong>
-            <span class="signal-sub" data-i18n="signal-delivery-sub" data-zh="面向屏幕的稳定交接" data-en="Stable handoff for screen">面向屏幕的稳定交接</span>
+            <span class="signal-eyebrow" data-i18n="signal-delivery-label" data-zh="AI 协同" data-en="AI ASSIST">AI 协同</span>
+            <strong class="signal-main">PROMPT + REVIEW</strong>
+            <span class="signal-sub" data-i18n="signal-delivery-sub" data-zh="参考拆解、字幕与素材检索" data-en="Reference breakdown, captions, media search">参考拆解、字幕与素材检索</span>
         </div>
     </div>
 </section>
 
 <section class="impact-theatre" id="impact" aria-label="Cinematic impact showcase">
     <div class="impact-stage focus-trigger" id="impactStage">
-        <div class="impact-meta"><span data-i18n="impact-meta-1" data-zh="冲击序列 / 03 镜头" data-en="IMPACT SEQUENCE / 03 SHOTS">冲击序列 / 03 镜头</span><span data-i18n="impact-meta-2" data-zh="滚动叙事 / Awwwards 参考" data-en="SCROLL STORY / AWWWARD STUDY">滚动叙事 / Awwwards 参考</span></div>
+        <div class="impact-media-field" aria-hidden="true">
+            <div class="impact-media-layer is-active" data-impact-background="0" style="background-image:url('assets/videos/landscape-grade-reel.jpg')"></div>
+            <div class="impact-media-layer" data-impact-background="1" style="background-image:url('assets/videos/city-grade-reel.jpg')"></div>
+            <div class="impact-media-layer" data-impact-background="2" style="background-image:url('assets/acp/acp-portrait.jpg')"></div>
+        </div>
+        <div class="impact-meta"><span data-i18n="impact-meta-1" data-zh="面试阅读 / 03 证据" data-en="INTERVIEW READ / 03 PROOFS">面试阅读 / 03 证据</span><span data-i18n="impact-meta-2" data-zh="滚动叙事 / 作品集结构" data-en="SCROLL STORY / PORTFOLIO STRUCTURE">滚动叙事 / 作品集结构</span></div>
         <div class="impact-orbit">709</div>
+        <div class="impact-kinetic" aria-hidden="true"><span id="impactKineticText">素材先行，判断随后</span></div>
         <div class="impact-layout">
             <div class="impact-copyblock gsap-reveal">
                 <h2 class="impact-title">
-                    <span data-i18n="impact-title-1" data-zh="剪掉" data-en="CUT">剪掉</span>
-                    <span class="red" data-i18n="impact-title-2" data-zh="噪声" data-en="NOISE">噪声</span>
-                    <span data-i18n="impact-title-3" data-zh="凝住帧" data-en="FRAME">凝住帧</span>
+                    <span data-i18n="impact-title-1" data-zh="让判断" data-en="JUDGMENT">让判断</span>
+                    <span class="red" data-i18n="impact-title-2" data-zh="先于" data-en="BEFORE">先于</span>
+                    <span data-i18n="impact-title-3" data-zh="炫技" data-en="SPECTACLE">炫技</span>
                 </h2>
-                <p class="impact-copy" data-i18n="impact-copy" data-zh="把剪辑节奏、色彩重心和交付标准压缩成可被面试官一眼读懂的视觉证据。页面不只展示作品，而是展示判断力。" data-en="Editing rhythm, color gravity, and delivery discipline are compressed into visual proof that reads in one glance. The portfolio shows judgment, not decoration.">把剪辑节奏、色彩重心和交付标准压缩成可被面试官一眼读懂的视觉证据。页面不只展示作品，而是展示判断力。</p>
+                <p class="impact-copy" data-i18n="impact-copy" data-zh="影视飓风需要能把素材整理清楚、把节奏剪顺、把颜色做稳的人。我把网页做成一份可交互的作品说明，让能力点、学习态度和岗位匹配度更快被看见。" data-en="MediaStorm needs people who can organize media clearly, make the cut flow, and keep color stable. This site turns the portfolio into an interactive interview brief, making skills, attitude, and role fit readable faster.">影视飓风需要能把素材整理清楚、把节奏剪顺、把颜色做稳的人。我把网页做成一份可交互的作品说明，让能力点、学习态度和岗位匹配度更快被看见。</p>
                 <div class="impact-console">
                     <div><span data-i18n="impact-console-rhythm" data-zh="节奏" data-en="RHYTHM">节奏</span><strong>23.976</strong></div>
                     <div><span data-i18n="impact-console-grade" data-zh="调色" data-en="GRADE">调色</span><strong>DWG</strong></div>
                     <div><span data-i18n="impact-console-export" data-zh="导出" data-en="EXPORT">导出</span><strong data-i18n="impact-console-lock" data-zh="锁定" data-en="LOCK">锁定</strong></div>
                 </div>
             </div>
-            <div class="impact-reel" aria-hidden="true">
-                <figure class="impact-card">
-                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=900&auto=format&fit=crop" alt="" loading="lazy" decoding="async">
+            <div class="impact-reel" aria-label="后期能力信号选择">
+                <figure class="impact-card is-active" data-impact-index="0" tabindex="0" role="button" aria-pressed="true" aria-label="选择剪辑节奏信号">
+                    <img src="assets/videos/landscape-grade-reel.jpg" alt="风景调色作品画面" loading="lazy" decoding="async">
                     <figcaption class="impact-card-label"><span>01</span> <span data-i18n="impact-card-1" data-zh="剪辑节奏" data-en="CUT RHYTHM">剪辑节奏</span></figcaption>
                 </figure>
-                <figure class="impact-card">
-                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=900&auto=format&fit=crop" alt="" loading="lazy" decoding="async">
+                <figure class="impact-card" data-impact-index="1" tabindex="0" role="button" aria-pressed="false" aria-label="选择色彩重心信号">
+                    <img src="assets/videos/city-grade-reel.jpg" alt="城市调色作品画面" loading="lazy" decoding="async">
                     <figcaption class="impact-card-label"><span>02</span> <span data-i18n="impact-card-2" data-zh="色彩重心" data-en="COLOR GRAVITY">色彩重心</span></figcaption>
                 </figure>
-                <figure class="impact-card">
-                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=900&auto=format&fit=crop" alt="" loading="lazy" decoding="async">
+                <figure class="impact-card" data-impact-index="2" tabindex="0" role="button" aria-pressed="false" aria-label="选择交付锁定信号">
+                    <img src="assets/acp/acp-portrait.jpg" alt="ACP 世界大赛现场照片" loading="lazy" decoding="async">
                     <figcaption class="impact-card-label"><span>03</span> <span data-i18n="impact-card-3" data-zh="交付锁定" data-en="DELIVERY LOCK">交付锁定</span></figcaption>
                 </figure>
             </div>
+        </div>
+        <div class="impact-transport" role="group" aria-label="后期作品信号控制台">
+            <button type="button" id="impactPrev" aria-label="上一个后期信号">‹</button>
+            <div class="impact-transport-copy"><span data-i18n="impact-transport-label" data-zh="后期作品信号" data-en="POST WORK SIGNAL">后期作品信号</span><strong id="impactTransportTitle">剪辑节奏</strong></div>
+            <div class="impact-transport-track" aria-hidden="true"><span id="impactTransportProgress"></span></div>
+            <div class="impact-transport-count" id="impactTransportCount">01 / 03</div>
+            <button type="button" id="impactToggle" aria-label="暂停自动切换" aria-pressed="false">Ⅱ</button>
+            <button type="button" id="impactNext" aria-label="下一个后期信号">›</button>
         </div>
     </div>
 </section>
@@ -1143,10 +1240,10 @@
     <div class="gsap-reveal">
         <div class="section-heading-row">
             <div>
-                <span class="section-label" data-i18n="arsenal-label" data-zh="基础设施" data-en="INFRASTRUCTURE">基础设施</span>
+                <span class="section-label" data-i18n="arsenal-label" data-zh="岗位能力结构" data-en="ROLE SKILL STRUCTURE">岗位能力结构</span>
                 <h2 class="section-title" data-i18n="arsenal-title" data-zh="后期系统，而非单点技能" data-en="SYSTEMS, NOT SINGLE SKILLS">后期系统，而非单点技能</h2>
             </div>
-            <p class="section-kicker" data-i18n="arsenal-kicker" data-zh="把剪辑、调色、合成、资产管理串成可复用流程，减少返工，稳定交付。" data-en="Editing, grading, compositing, and data discipline are treated as one repeatable delivery system.">把剪辑、调色、合成、资产管理串成可复用流程，减少返工，稳定交付。</p>
+            <p class="section-kicker" data-i18n="arsenal-kicker" data-zh="把剪辑、调色、合成、素材管理和 AI 辅助检索串成可复用流程，减少返工，稳定交付。" data-en="Editing, grading, compositing, media management, and AI-assisted search are treated as one repeatable delivery system.">把剪辑、调色、合成、素材管理和 AI 辅助检索串成可复用流程，减少返工，稳定交付。</p>
         </div>
         <div class="bento-grid">
             <div class="bento-item bento-large glass-panel focus-trigger">
@@ -1154,7 +1251,7 @@
                 <div class="bento-icon" data-i18n="bento-1-icon" data-zh="[ 01_色彩科学 ]" data-en="[ 01_COLOR SCIENCE ]">[ 01_色彩科学 ]</div>
                 <div>
                     <div class="bento-title" data-i18n="bento-1-title" data-zh="节点调色<br>与色彩科学" data-en="NODE GRADING<br>& COLOR SCIENCE">节点调色<br>与色彩科学</div>
-                    <div class="bento-desc" data-i18n="bento-1-desc" data-zh="抛弃主观滤镜，建立基于 DWG 的标准化 ACES 工作流。在达芬奇的节点树中寻找光影的最优解，还原画面本真质感。" data-en="Discarding subjective filters for a standardized ACES workflow based on DWG.">抛弃主观滤镜，建立基于 DWG 的标准化 ACES 工作流。在达芬奇的节点树中寻找光影的最优解，还原画面本真质感。</div>
+                    <div class="bento-desc" data-i18n="bento-1-desc" data-zh="以 DWG / CST / 示波器为基础建立调色判断，先保证曝光、肤色与层次稳定，再做风格化处理。" data-en="Color judgment starts from DWG, CST, and scopes: stabilize exposure, skin tone, and separation before stylization.">以 DWG / CST / 示波器为基础建立调色判断，先保证曝光、肤色与层次稳定，再做风格化处理。</div>
                     <div class="bento-proof"><span class="proof-pill">ACES CST</span><span class="proof-pill" data-i18n="proof-node-tree" data-zh="节点树" data-en="NODE TREE">节点树</span><span class="proof-pill" data-i18n="proof-skin-tone" data-zh="肤色保护" data-en="SKIN TONE">肤色保护</span></div>
                 </div>
             </div>
@@ -1162,16 +1259,16 @@
                 <div class="bento-icon" data-i18n="bento-2-icon" data-zh="[ 02_离线剪辑 ]" data-en="[ 02_OFFLINE EDIT ]">[ 02_离线剪辑 ]</div>
                 <div>
                     <div class="bento-title" data-i18n="bento-2-title" data-zh="离线剪辑与叙事逻辑" data-en="OFFLINE EDIT & NARRATIVE">离线剪辑与叙事逻辑</div>
-                    <div class="bento-desc" data-i18n="bento-2-desc" data-zh="剪辑是时间的艺术。专注于多机位梳理与光流变速，用克制的刀法保留影像的呼吸感。" data-en="Editing is the art of time. Focusing on multicam organization and optical flow retiming.">剪辑是时间的艺术。专注于多机位梳理与光流变速，用克制的刀法保留影像的呼吸感。</div>
+                    <div class="bento-desc" data-i18n="bento-2-desc" data-zh="先完成素材整理、结构粗剪、节奏校准与 BGM/字幕位置，再进入包装和精修，让内容逻辑始终清楚。" data-en="Start with media organization, rough structure, rhythm, and BGM/caption placement before polish, keeping the story logic clear.">先完成素材整理、结构粗剪、节奏校准与 BGM/字幕位置，再进入包装和精修，让内容逻辑始终清楚。</div>
                     <div class="bento-proof"><span class="proof-pill" data-i18n="proof-multicam" data-zh="多机位" data-en="MULTICAM">多机位</span><span class="proof-pill" data-i18n="proof-retiming" data-zh="变速" data-en="RETIMING">变速</span></div>
                 </div>
             </div>
             <div class="bento-item glass-panel focus-trigger">
-                <div class="bento-icon" data-i18n="bento-3-icon" data-zh="[ 03_视觉修缮 ]" data-en="[ 03_VFX ]">[ 03_视觉修缮 ]</div>
+                <div class="bento-icon" data-i18n="bento-3-icon" data-zh="[ 03_AI 协同 ]" data-en="[ 03_AI ASSIST ]">[ 03_AI 协同 ]</div>
                 <div>
-                    <div class="bento-title" data-i18n="bento-3-title" data-zh="视觉修缮" data-en="VISUAL REFINEMENT">视觉修缮</div>
-                    <div class="bento-desc" data-i18n="bento-3-desc" data-zh="借助 AE 三维反求与精细合成，隐匿穿帮与瑕疵，保持视觉沉浸感。" data-en="Using AE 3D tracking and fine compositing to conceal goofs and flaws.">借助 AE 三维反求与精细合成，隐匿穿帮与瑕疵，保持视觉沉浸感。</div>
-                    <div class="bento-proof"><span class="proof-pill" data-i18n="proof-track" data-zh="跟踪" data-en="TRACK">跟踪</span><span class="proof-pill" data-i18n="proof-cleanup" data-zh="清理" data-en="CLEANUP">清理</span></div>
+                    <div class="bento-title" data-i18n="bento-3-title" data-zh="AI 辅助后期" data-en="AI-ASSISTED POST">AI 辅助后期</div>
+                    <div class="bento-desc" data-i18n="bento-3-desc" data-zh="熟练使用生成式 AI 做参考拆解、脚本与字幕辅助、素材标注、多模态检索和提示词工程，但最终判断仍由人完成。" data-en="Using generative AI for reference breakdowns, script and caption assistance, media tagging, multimodal search, and prompt engineering, with human review kept final.">熟练使用生成式 AI 做参考拆解、脚本与字幕辅助、素材标注、多模态检索和提示词工程，但最终判断仍由人完成。</div>
+                    <div class="bento-proof"><span class="proof-pill" data-i18n="proof-track" data-zh="提示词" data-en="PROMPT">提示词</span><span class="proof-pill" data-i18n="proof-cleanup" data-zh="多模态" data-en="MULTIMODAL">多模态</span></div>
                 </div>
             </div>
             <div class="bento-item glass-panel focus-trigger">
@@ -1179,7 +1276,7 @@
                 <div class="bento-icon" data-i18n="bento-4-icon" data-zh="[ 04_数据与DIT ]" data-en="[ 04_DATA & DIT ]">[ 04_数据与DIT ]</div>
                 <div>
                     <div class="bento-title" data-i18n="bento-4-title" data-zh="数字影像与资产控制" data-en="DATA & ASSETS">数字影像与资产控制</div>
-                    <div class="bento-desc" data-i18n="bento-4-desc" data-zh="熟练掌握 Codex RAW 格式流转，依托 NAS 阵列构建安全的 DIT 数据流。" data-en="Mastering Codex RAW workflow, relying on NAS arrays to build a secure DIT workflow.">熟练掌握 Codex RAW 格式流转，依托 NAS 阵列构建安全的 DIT 数据流。</div>
+                    <div class="bento-desc" data-i18n="bento-4-desc" data-zh="重视素材命名、代理文件、版本管理、备份与交付检查，让后期流程可追踪、可复核。" data-en="Media naming, proxies, versioning, backups, and delivery checks keep the post workflow traceable and reviewable.">重视素材命名、代理文件、版本管理、备份与交付检查，让后期流程可追踪、可复核。</div>
                     <div class="bento-proof"><span class="proof-pill" data-i18n="proof-backup" data-zh="备份" data-en="BACKUP">备份</span><span class="proof-pill" data-i18n="proof-conform" data-zh="套底" data-en="CONFORM">套底</span></div>
                 </div>
             </div>
@@ -1189,15 +1286,15 @@
 
 <section class="section-padding" id="color-engine">
     <div class="gsap-reveal">
-        <span class="section-label" style="justify-content: center;" data-i18n="engine-label" data-zh="色彩管线交互引擎" data-en="LIVE COLOR PIPELINE ENGINE">色彩管线交互引擎</span>
+        <span class="section-label" style="justify-content: center;" data-i18n="engine-label" data-zh="色彩管线交互控制室" data-en="INTERACTIVE COLOR PIPELINE BAY">色彩管线交互控制室</span>
         <div class="color-engine-wrapper">
             <!-- 绝对恢复原先最经典的夜店高对比真实图片 -->
             <div class="pipeline-container focus-trigger" id="pipelineGradingBay" role="slider" tabindex="0" aria-label="对比 Log 与调色后的画面" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="调色后画面显示 50%">
                 <div class="pipeline-layer layer-log">
-                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200&auto=format&fit=crop" alt="Log 画面预览">
+                    <img src="assets/videos/city-grade-reel.jpg" alt="Log 画面预览">
                 </div>
                 <div class="pipeline-layer layer-graded" id="gradedLayer">
-                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200&auto=format&fit=crop" id="imgGraded" alt="调色后画面预览">
+                    <img src="assets/videos/city-grade-reel.jpg" id="imgGraded" alt="调色后画面预览">
                 </div>
                 <div class="pipeline-handle" id="pipelineHandle"></div>
             </div>
@@ -1221,8 +1318,8 @@
 
 <section class="marquee-section">
     <div class="marquee-track" id="marquee-track">
-        <div class="marquee-text" data-i18n="marquee" data-zh="把偏执留给参数，把纯粹还给画面。 <span>// 工业化标准 //</span> " data-en="LEAVE THE OBSESSION TO PARAMETERS, RETURN PURITY TO THE FRAME.">把偏执留给参数，把纯粹还给画面。 <span>// 工业化标准 //</span> </div>
-        <div class="marquee-text" data-i18n="marquee" data-zh="把偏执留给参数，把纯粹还给画面。 <span>// 工业化标准 //</span> " data-en="LEAVE THE OBSESSION TO PARAMETERS, RETURN PURITY TO THE FRAME.">把偏执留给参数，把纯粹还给画面。 <span>// 工业化标准 //</span> </div>
+        <div class="marquee-text" data-i18n="marquee" data-zh="把 AI 交给流程，把判断留给画面。 <span>// 剪辑 / 调色 / 交付 //</span> " data-en="LET AI SUPPORT THE WORKFLOW, KEEP JUDGMENT IN THE FRAME.">把 AI 交给流程，把判断留给画面。 <span>// 剪辑 / 调色 / 交付 //</span> </div>
+        <div class="marquee-text" data-i18n="marquee" data-zh="把 AI 交给流程，把判断留给画面。 <span>// 剪辑 / 调色 / 交付 //</span> " data-en="LET AI SUPPORT THE WORKFLOW, KEEP JUDGMENT IN THE FRAME.">把 AI 交给流程，把判断留给画面。 <span>// 剪辑 / 调色 / 交付 //</span> </div>
     </div>
 </section>
 
@@ -1233,7 +1330,7 @@
             <!-- 绝对恢复原先最经典的真实精选集展示图 -->
             <div class="tilt-card glass-panel focus-trigger">
                 <div class="tilt-card-type" data-i18n="tilt-1-type" data-zh="纪录片" data-en="DOCUMENTARY">纪录片</div>
-                <img src="https://images.unsplash.com/photo-1485236715568-ddc5ee6ca227?q=80&w=800&auto=format&fit=crop" class="peaking-img" alt="城市纪录片作品氛围画面" loading="lazy" decoding="async">
+                <img src="assets/videos/city-grade-reel.jpg" class="peaking-img" alt="城市纪录片作品氛围画面" loading="lazy" decoding="async">
                 <div class="tilt-card-inner">
                     <div class="tilt-card-bg">01</div>
                     <div class="tilt-card-content"><div class="tilt-card-title" data-i18n="tilt-1-title" data-zh="城市褶皱" data-en="CITY FOLDS">城市褶皱</div><div class="tilt-card-meta" data-i18n="tilt-1-meta" data-zh="纪录片 / 15MIN" data-en="DOCUMENTARY / 15MIN">纪录片 / 15MIN</div></div>
@@ -1241,7 +1338,7 @@
             </div>
             <div class="tilt-card glass-panel focus-trigger">
                 <div class="tilt-card-type" data-i18n="tilt-2-type" data-zh="实验影像" data-en="EXPERIMENT">实验影像</div>
-                <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800&auto=format&fit=crop" class="peaking-img" alt="实验影像作品氛围画面" loading="lazy" decoding="async">
+                <img src="assets/videos/landscape-grade-reel.jpg" class="peaking-img" alt="实验影像作品氛围画面" loading="lazy" decoding="async">
                 <div class="tilt-card-inner">
                     <div class="tilt-card-bg">02</div>
                     <div class="tilt-card-content"><div class="tilt-card-title" data-i18n="tilt-2-title" data-zh="寻光" data-en="SEEKING LIGHT">寻光</div><div class="tilt-card-meta" data-i18n="tilt-2-meta" data-zh="实验影像 / 8MIN" data-en="EXPERIMENTAL / 8MIN">实验影像 / 8MIN</div></div>
@@ -1249,7 +1346,7 @@
             </div>
             <div class="tilt-card glass-panel focus-trigger">
                 <div class="tilt-card-type" data-i18n="tilt-3-type" data-zh="商业短片" data-en="COMMERCIAL">商业短片</div>
-                <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=800&auto=format&fit=crop" class="peaking-img" alt="商业短片作品氛围画面" loading="lazy" decoding="async">
+                <img src="assets/acp/acp-portrait.jpg" class="peaking-img" alt="商业短片作品氛围画面" loading="lazy" decoding="async">
                 <div class="tilt-card-inner">
                     <div class="tilt-card-bg">03</div>
                     <div class="tilt-card-content"><div class="tilt-card-title" data-i18n="tilt-3-title" data-zh="留白" data-en="WHITE SPACE">留白</div><div class="tilt-card-meta" data-i18n="tilt-3-meta" data-zh="商业短片 / 3MIN" data-en="COMMERCIAL / 3MIN">商业短片 / 3MIN</div></div>
@@ -1266,7 +1363,7 @@
     
     <div class="carousel-track" id="carouselTrack">
         <div class="carousel-item glass-panel focus-trigger video-trigger" role="button" tabindex="0" aria-pressed="true" aria-label="暂停或播放作品视频：沉水之城">
-            <div class="cinematic-viewport"><video poster="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200&auto=format&fit=crop" preload="none" muted playsinline aria-hidden="true"></video></div>
+            <div class="cinematic-viewport"><video poster="assets/videos/city-grade-reel.jpg" preload="none" muted playsinline aria-hidden="true"></video></div>
             <div class="dv-badge-wrap">
                 <div class="dv-badge">
                     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -1280,7 +1377,7 @@
             <div class="carousel-content"><div><div class="carousel-title" data-i18n="c-1-title" data-zh="沉水之城" data-en="SUNKEN CITY">沉水之城</div><div class="carousel-meta" data-i18n="c-1-meta" data-zh="音乐录影带 / 2025 / 4 MIN" data-en="MUSIC VIDEO / 2025 / 4 MIN">音乐录影带 / 2025 / 4 MIN</div><div class="carousel-specs"><div class="spec"><span data-i18n="spec-role-1" data-zh="职责" data-en="ROLE">职责</span><strong data-i18n="spec-color-edit" data-zh="调色 / 剪辑" data-en="COLOR / EDIT">调色 / 剪辑</strong></div><div class="spec"><span data-i18n="spec-pipeline-1" data-zh="管线" data-en="PIPELINE">管线</span><strong>DWG TO 709</strong></div><div class="spec"><span data-i18n="spec-output-1" data-zh="输出" data-en="OUTPUT">输出</span><strong data-i18n="spec-master-4" data-zh="4分钟母版" data-en="4 MIN MASTER">4分钟母版</strong></div></div></div></div>
         </div>
         <div class="carousel-item glass-panel focus-trigger video-trigger" role="button" tabindex="0" aria-pressed="true" aria-label="暂停或播放作品视频：远方回声">
-            <div class="cinematic-viewport"><video poster="https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=1200&auto=format&fit=crop" preload="none" muted playsinline aria-hidden="true"></video></div>
+            <div class="cinematic-viewport"><video poster="assets/videos/landscape-grade-reel.jpg" preload="none" muted playsinline aria-hidden="true"></video></div>
             <div class="carousel-bg-num">02</div>
             <div class="carousel-content"><div><div class="carousel-title" data-i18n="c-2-title" data-zh="远方回声" data-en="DISTANT ECHOES">远方回声</div><div class="carousel-meta" data-i18n="c-2-meta" data-zh="剧情短片 / 2024 / 12 MIN" data-en="SHORT FILM / 2024 / 12 MIN">剧情短片 / 2024 / 12 MIN</div><div class="carousel-specs"><div class="spec"><span data-i18n="spec-role-2" data-zh="职责" data-en="ROLE">职责</span><strong data-i18n="spec-offline" data-zh="离线剪辑" data-en="OFFLINE">离线剪辑</strong></div><div class="spec"><span data-i18n="spec-pipeline-2" data-zh="管线" data-en="PIPELINE">管线</span><strong data-i18n="spec-conform" data-zh="套底" data-en="CONFORM">套底</strong></div><div class="spec"><span data-i18n="spec-output-2" data-zh="输出" data-en="OUTPUT">输出</span><strong data-i18n="spec-cut-12" data-zh="12分钟剪辑版" data-en="12 MIN CUT">12分钟剪辑版</strong></div></div></div></div>
         </div>
@@ -1320,8 +1417,8 @@
 <section class="section-padding" id="about">
     <div class="gsap-reveal about-grid">
         <div>
-            <span class="section-label" data-i18n="about-label" data-zh="独立创作者" data-en="INDEPENDENT CREATOR">独立创作者</span>
-            <div class="about-text" id="splitTextTarget" data-i18n="about-text" data-zh="一名对后期制作充满敬畏之心的剪辑师。深受工业化理念的影响，我试图将对技术的严谨融入每一条时间线。愿用十二分的热忱与踏实，对待每一段素材，确保项目的稳定与高质量交付。" data-en="An editor full of reverence for post-production. Deeply influenced by industrial concepts, I integrate technical rigor into every timeline.">一名对后期制作充满敬畏之心的剪辑师。深受工业化理念的影响，我试图将对技术的严谨融入每一条时间线。愿用十二分的热忱与踏实，对待每一段素材，确保项目的稳定与高质量交付。</div>
+            <span class="section-label" data-i18n="about-label" data-zh="后期实习候选人" data-en="POST-PRODUCTION INTERN CANDIDATE">后期实习候选人</span>
+            <div class="about-text" id="splitTextTarget" data-i18n="about-text" data-zh="我正在申请影视后期实习，主方向是剪辑与调色。熟悉 DaVinci Resolve、Premiere Pro、After Effects，并能把生成式 AI 用于参考拆解、脚本/字幕辅助、素材归档与多模态检索。对我来说，工具不是炫技，而是为了更快理解项目、更稳交付结果。" data-en="I am applying for a post-production internship with a focus on editing and color. I work with DaVinci Resolve, Premiere Pro, and After Effects, and use generative AI for reference breakdowns, script and caption assistance, media organization, and multimodal search. Tools are not decoration; they help me understand projects faster and deliver more reliably.">我正在申请影视后期实习，主方向是剪辑与调色。熟悉 DaVinci Resolve、Premiere Pro、After Effects，并能把生成式 AI 用于参考拆解、脚本/字幕辅助、素材归档与多模态检索。对我来说，工具不是炫技，而是为了更快理解项目、更稳交付结果。</div>
             <div class="about-proofline" aria-label="工作方式摘要">
                 <div class="about-proof"><span data-i18n="about-proof-1-label" data-zh="01 / 方法" data-en="01 / METHOD">01 / 方法</span><strong data-i18n="about-proof-1" data-zh="先找参考" data-en="REFERENCE FIRST">先找参考</strong></div>
                 <div class="about-proof"><span data-i18n="about-proof-2-label" data-zh="02 / 复核" data-en="02 / REVIEW">02 / 复核</span><strong data-i18n="about-proof-2" data-zh="逐帧检查" data-en="FRAME CHECK">逐帧检查</strong></div>
@@ -1331,14 +1428,14 @@
                 <div class="tech-badge active-tool">DaVinci Resolve Studio</div>
                 <div class="tech-badge active-tool">Premiere Pro</div>
                 <div class="tech-badge active-tool">After Effects</div>
-                <div class="tech-badge active-tool" data-i18n="tool-codex-workflow" data-zh="ARRI Codex 流程" data-en="ARRI Codex Workflow">ARRI Codex 流程</div>
+                <div class="tech-badge active-tool" data-i18n="tool-codex-workflow" data-zh="AI 辅助后期流程" data-en="AI-assisted Post Workflow">AI 辅助后期流程</div>
                 <div class="tech-badge" data-i18n="tool-aces-pipeline" data-zh="ACES 管线" data-en="ACES Pipeline">ACES 管线</div>
             </div>
         </div>
         <div class="skill-group">
-            <div class="skill-item gsap-reveal"><span>DaVinci Resolve</span><div data-i18n="skill-1" data-zh="节点树架构 / DWG 映射" data-en="Node Tree / DWG Mapping">节点树架构 / DWG 映射</div><div class="skill-item-bar"></div></div>
-            <div class="skill-item gsap-reveal"><span>Premiere Pro</span><div data-i18n="skill-2" data-zh="多机位管理 / 叙事节奏" data-en="Multicam / Narrative Pacing">多机位管理 / 叙事节奏</div><div class="skill-item-bar"></div></div>
-            <div class="skill-item gsap-reveal"><span data-i18n="skill-3-name" data-zh="DIT 与数据管理" data-en="DIT & Wrangling">DIT 与数据管理</span><div data-i18n="skill-3" data-zh="Codex 级 RAW 驻留 / NAS 阵列" data-en="Codex RAW Archiving / NAS Array">Codex 级 RAW 驻留 / NAS 阵列</div><div class="skill-item-bar"></div></div>
+            <div class="skill-item gsap-reveal"><span>DaVinci Resolve</span><div data-i18n="skill-1" data-zh="节点树 / DWG / CST / 示波器" data-en="Node Tree / DWG / CST / Scopes">节点树 / DWG / CST / 示波器</div><div class="skill-item-bar"></div></div>
+            <div class="skill-item gsap-reveal"><span>Premiere Pro</span><div data-i18n="skill-2" data-zh="素材整理 / 粗剪结构 / 叙事节奏" data-en="Media Organization / Rough Cut / Narrative Pacing">素材整理 / 粗剪结构 / 叙事节奏</div><div class="skill-item-bar"></div></div>
+            <div class="skill-item gsap-reveal"><span data-i18n="skill-3-name" data-zh="生成式 AI 工作流" data-en="Generative AI Workflow">生成式 AI 工作流</span><div data-i18n="skill-3" data-zh="参考拆解 / 字幕辅助 / 素材检索" data-en="Reference Breakdown / Captions / Media Search">参考拆解 / 字幕辅助 / 素材检索</div><div class="skill-item-bar"></div></div>
         </div>
     </div>
 </section>
@@ -1360,8 +1457,8 @@
     <div class="end-credit-frame">
         <div class="end-credit-kicker" data-i18n="end-kicker" data-zh="最终输出完成" data-en="FINAL EXPORT COMPLETE">最终输出完成</div>
         <h2 class="end-credit-title"><span data-i18n="end-title" data-zh="感谢您的观看" data-en="THANK YOU FOR WATCHING">感谢您的观看</span></h2>
-        <p class="end-credit-copy" data-i18n="end-copy" data-zh="愿每一次交付，都值得被反复观看。" data-en="May every delivery be worth watching again.">愿每一次交付，都值得被反复观看。</p>
-        <p class="end-credit-appeal" data-i18n="end-appeal" data-zh="期待获得一次面谈机会。我希望加入你们，把年轻的学习速度、稳定的执行力和对影像的热情，投入到真正能<strong>改变世界</strong>的作品里。" data-en="I look forward to the opportunity to speak with you. I hope to bring young learning speed, reliable execution, and real passion for images into work that can genuinely <strong>change the world.</strong>">期待获得一次面谈机会。我希望加入你们，把年轻的学习速度、稳定的执行力和对影像的热情，投入到真正能<strong>改变世界</strong>的作品里。</p>
+        <p class="end-credit-copy" data-i18n="end-copy" data-zh="谢谢您看完这份作品集，也谢谢您愿意花时间判断一个年轻后期的可能性。" data-en="Thank you for watching this portfolio, and for taking the time to consider the potential of a young post-production candidate.">谢谢您看完这份作品集，也谢谢您愿意花时间判断一个年轻后期的可能性。</p>
+        <p class="end-credit-appeal" data-i18n="end-appeal" data-zh="请给我一次参与真实项目的机会。我想加入影视飓风，从基础执行做起，把学习速度、审美判断、AI 辅助工作流和稳定交付带进团队，一起做出能被更多人记住的影像。" data-en="Please give me one chance to join real projects. I want to join MediaStorm, start from fundamental execution, and bring learning speed, visual judgment, AI-assisted workflow, and reliable delivery into the team.">请给我一次参与真实项目的机会。我想加入影视飓风，从基础执行做起，把学习速度、审美判断、AI 辅助工作流和稳定交付带进团队，一起做出能被更多人记住的影像。</p>
         <div class="end-credit-progress" aria-hidden="true"><span></span></div>
         <div class="end-credit-code">END_FRAME / YBW_POST_26</div>
     </div>
@@ -1387,10 +1484,10 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="assets/vendor/three.min.js"></script>
 
 <script>
 window.addEventListener('DOMContentLoaded', () => {
@@ -1407,14 +1504,14 @@ window.addEventListener('DOMContentLoaded', () => {
     const loaderLangButtons = Array.from(document.querySelectorAll('[data-loader-lang]'));
     const loaderCopy = {
         en: {
-            title: ['BUILD', 'YOUR', 'DREAMS'],
-            subtitle: 'AI-powered creativity for the next generation.',
+            title: ['CRAFT', 'EVERY', 'FRAME'],
+            subtitle: 'A post-production portfolio in editing, grading, and AI-assisted workflow.',
             enter: 'ENTER',
             aria: 'Enter portfolio'
         },
         zh: {
-            title: ['重塑', '影像', '之梦'],
-            subtitle: '以后期制作构建下一代视觉表达。',
+            title: ['认真', '做好', '每一帧'],
+            subtitle: '剪辑、调色与 AI 协同的后期作品集。',
             enter: '进入',
             aria: '进入作品集'
         }
@@ -1723,8 +1820,8 @@ window.addEventListener('DOMContentLoaded', () => {
                 cache: ['87%', '91%', '96%', '就绪'],
                 cut: ['23.976', '24.000', '锁定', '粗剪'],
                 aces: ['DWG', 'CST', 'LOG', '709'],
-                lut: ['开启', '旁路', '胶片', '显影'],
-                mask: ['12', '18', '32', '跟踪'],
+                lut: ['校准', '旁路', '胶片', '显影'],
+                mask: ['字幕', '标注', '检索', '复核'],
                 scope: ['同步', '分量', '矢量', '波形'],
                 grain: ['16MM', '35MM', '光晕', '细腻'],
                 export: ['REC.709', 'H.265', 'PRORES', '8K']
@@ -1733,8 +1830,8 @@ window.addEventListener('DOMContentLoaded', () => {
                 cache: ['87%', '91%', '96%', 'READY'],
                 cut: ['23.976', '24.000', 'LOCK', 'A-CUT'],
                 aces: ['DWG', 'CST', 'LOG', '709'],
-                lut: ['ON', 'BYPASS', 'FILM', 'SHOW'],
-                mask: ['12', '18', '32', 'TRACK'],
+                lut: ['CAL', 'BYPASS', 'FILM', 'SHOW'],
+                mask: ['CAPT', 'TAG', 'SEARCH', 'CHECK'],
                 scope: ['SYNC', 'PARADE', 'VECT', 'WAVE'],
                 grain: ['16MM', '35MM', 'HALO', 'FINE'],
                 export: ['REC.709', 'H.265', 'PRORES', '8K']
@@ -1765,16 +1862,16 @@ window.addEventListener('DOMContentLoaded', () => {
             if(!el) return;
             const phraseMap = {
                 zh: [
-                    '逐帧校准 / 后期系统就绪',
+                    '素材入库 / 后期系统就绪',
                     '色彩管线在线 / DWG 到 709',
-                    '节奏锁定 / 剪辑正在呼吸',
-                    '深度扫描激活 / 影像重塑中'
+                    '粗剪节奏锁定 / 信息更清楚',
+                    'AI 协同检索 / 人工判断收口'
                 ],
                 en: [
-                    'FRAME BY FRAME / POST SYSTEM READY',
+                    'MEDIA INGEST / POST SYSTEM READY',
                     'COLOR PIPELINE ONLINE / DWG TO 709',
-                    'RHYTHM LOCKED / CUT BREATHING',
-                    'DEPTH SCAN ACTIVE / IMAGE RESHAPE'
+                    'ROUGH CUT LOCKED / MESSAGE CLEAR',
+                    'AI ASSISTED SEARCH / HUMAN REVIEW'
                 ]
             };
             const getPhrases = () => phraseMap[window.__siteLang === 'en' ? 'en' : 'zh'];
@@ -2292,6 +2389,8 @@ window.addEventListener('DOMContentLoaded', () => {
             gsap.to(el, { opacity: 0, y: 4, duration: 0.15, onComplete: () => { el.innerHTML = newText; gsap.to(el, { opacity:1, y:0, duration:0.3 }); if(el.id === 'splitTextTarget') initSplitText(); } });
         });
         if(typeof window.__updateHeroScrambleLanguage === 'function') window.__updateHeroScrambleLanguage(currentLang);
+        if(typeof window.__refreshPortfolioCinemaLanguage === 'function') window.__refreshPortfolioCinemaLanguage();
+        if(typeof window.__updateImpactSignalLanguage === 'function') window.__updateImpactSignalLanguage();
     };
     const switchLanguage = () => {
         applySiteLanguage(currentLang === 'zh' ? 'en' : 'zh');
@@ -2788,41 +2887,117 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    document.querySelectorAll('.portfolio-video-card.video-trigger').forEach(card => {
-        const video = card.querySelector('video');
-        const syncVideoState = () => {
-            const isPlaying = Boolean(video && !video.paused);
-            card.classList.toggle('is-playing', isPlaying);
-            card.setAttribute('aria-pressed', isPlaying ? 'true' : 'false');
-            if(document.body.classList.contains('video-hover') && cPlay) cPlay.textContent = isPlaying ? 'PAUSE' : 'PLAY';
-        };
-        const pauseOtherVideos = () => {
-            document.querySelectorAll('.portfolio-video-card.video-trigger video').forEach(other => {
-                if(other !== video && !other.paused) other.pause();
-            });
-        };
-        const toggleVideo = () => {
-            if(!video) return;
-            if(video.paused) {
-                pauseOtherVideos();
-                video.muted = true;
-                video.play().then(syncVideoState).catch(syncVideoState);
-            } else {
-                video.pause();
-                syncVideoState();
-            }
-        };
-        card.addEventListener('click', toggleVideo);
-        card.addEventListener('keydown', e => {
-            if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleVideo(); }
+    const cinemaCards = Array.from(document.querySelectorAll('.portfolio-video-card[data-cinema-video]'));
+    const portfolioCinema = document.getElementById('portfolioCinema');
+    const portfolioCinemaVideo = document.getElementById('portfolioCinemaVideo');
+    const portfolioCinemaClose = document.getElementById('portfolioCinemaClose');
+    const portfolioCinemaPrev = document.getElementById('portfolioCinemaPrev');
+    const portfolioCinemaNext = document.getElementById('portfolioCinemaNext');
+    const portfolioCinemaTag = document.getElementById('portfolioCinemaTag');
+    const portfolioCinemaTitle = document.getElementById('portfolioCinemaTitle');
+    const portfolioCinemaNote = document.getElementById('portfolioCinemaNote');
+    const portfolioCinemaSweep = portfolioCinema ? portfolioCinema.querySelector('.portfolio-cinema-sweep') : null;
+    let portfolioCinemaIndex = -1;
+    let portfolioCinemaTimeline = null;
+    const getCinemaLangSuffix = () => (currentLang === 'en' ? 'En' : 'Zh');
+    const syncCinemaCopy = () => {
+        const card = cinemaCards[portfolioCinemaIndex];
+        if(!card) return;
+        const suffix = getCinemaLangSuffix();
+        if(portfolioCinemaTag) portfolioCinemaTag.textContent = card.dataset[`cinemaTag${suffix}`] || card.dataset.cinemaTagZh || '';
+        if(portfolioCinemaTitle) portfolioCinemaTitle.textContent = card.dataset[`cinemaTitle${suffix}`] || card.dataset.cinemaTitleZh || '';
+        if(portfolioCinemaNote) portfolioCinemaNote.textContent = card.dataset[`cinemaNote${suffix}`] || card.dataset.cinemaNoteZh || '';
+    };
+    window.__refreshPortfolioCinemaLanguage = syncCinemaCopy;
+    const playCinemaVideo = () => {
+        if(!portfolioCinemaVideo) return;
+        portfolioCinemaVideo.play().catch(() => {
+            if(portfolioCinemaVideo) portfolioCinemaVideo.controls = true;
         });
-        card.addEventListener('mouseenter', syncVideoState);
-        if(video) {
-            video.addEventListener('play', syncVideoState);
-            video.addEventListener('pause', syncVideoState);
-            video.addEventListener('ended', syncVideoState);
-            syncVideoState();
+    };
+    const animateCinemaIn = () => {
+        if(!portfolioCinema || !portfolioCinemaVideo) return;
+        if(portfolioCinemaTimeline) portfolioCinemaTimeline.kill();
+        if(!window.gsap || reduceMotion) {
+            portfolioCinemaVideo.style.clipPath = 'inset(0 0 0 0)';
+            return;
         }
+        const infoTargets = [portfolioCinemaTag, portfolioCinemaTitle, portfolioCinemaNote].filter(Boolean);
+        portfolioCinemaTimeline = gsap.timeline({ defaults: { ease: 'expo.out' } });
+        gsap.set(portfolioCinemaVideo, { clipPath: 'inset(50% 0 50% 0)', scale: 0.985, autoAlpha: 0.42 });
+        gsap.set(infoTargets, { y: 22, autoAlpha: 0 });
+        if(portfolioCinemaSweep) gsap.set(portfolioCinemaSweep, { scaleX: 0, autoAlpha: 1 });
+        portfolioCinemaTimeline
+            .to(portfolioCinemaSweep, { scaleX: 1, duration: 0.32, ease: 'power3.out' }, 0)
+            .to(portfolioCinemaSweep, { scaleX: 0, autoAlpha: 0, duration: 0.5, ease: 'power3.in' }, 0.3)
+            .to(portfolioCinemaVideo, { clipPath: 'inset(0% 0 0% 0)', scale: 1, autoAlpha: 1, duration: 0.92 }, 0.14)
+            .to(infoTargets, { y: 0, autoAlpha: 1, stagger: 0.08, duration: 0.62, ease: 'power3.out' }, 0.42);
+    };
+    const openPortfolioCinema = (index) => {
+        const card = cinemaCards[index];
+        if(!portfolioCinema || !portfolioCinemaVideo || !card) return;
+        portfolioCinemaIndex = index;
+        const rect = card.getBoundingClientRect();
+        portfolioCinema.style.setProperty('--cinema-x', `${((rect.left + rect.width / 2) / window.innerWidth) * 100}%`);
+        portfolioCinema.style.setProperty('--cinema-y', `${((rect.top + rect.height / 2) / window.innerHeight) * 100}%`);
+        syncCinemaCopy();
+        portfolioCinemaVideo.pause();
+        portfolioCinemaVideo.setAttribute('poster', card.dataset.cinemaPoster || '');
+        portfolioCinemaVideo.src = card.dataset.cinemaVideo;
+        portfolioCinemaVideo.controls = true;
+        portfolioCinemaVideo.muted = false;
+        portfolioCinemaVideo.currentTime = 0;
+        portfolioCinema.classList.add('is-active');
+        portfolioCinema.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('portfolio-cinema-open');
+        cinemaCards.forEach(item => item.setAttribute('aria-expanded', item === card ? 'true' : 'false'));
+        animateCinemaIn();
+        portfolioCinemaVideo.load();
+        playCinemaVideo();
+        if(portfolioCinemaClose) portfolioCinemaClose.focus({ preventScroll: true });
+    };
+    const closePortfolioCinema = () => {
+        if(!portfolioCinema || !portfolioCinemaVideo || !portfolioCinema.classList.contains('is-active')) return;
+        const finishClose = () => {
+            portfolioCinema.classList.remove('is-active');
+            portfolioCinema.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('portfolio-cinema-open');
+            portfolioCinemaVideo.pause();
+            portfolioCinemaVideo.removeAttribute('src');
+            portfolioCinemaVideo.load();
+            cinemaCards.forEach(item => item.setAttribute('aria-expanded', 'false'));
+            const lastCard = cinemaCards[portfolioCinemaIndex];
+            if(lastCard) lastCard.focus({ preventScroll: true });
+        };
+        if(portfolioCinemaTimeline) portfolioCinemaTimeline.kill();
+        if(window.gsap && !reduceMotion) {
+            gsap.timeline({ onComplete: finishClose })
+                .to([portfolioCinemaVideo, portfolioCinemaTag, portfolioCinemaTitle, portfolioCinemaNote].filter(Boolean), { autoAlpha: 0, y: -12, duration: 0.28, ease: 'power2.in' })
+                .to(portfolioCinema, { autoAlpha: 0, duration: 0.24, ease: 'power2.out', clearProps: 'opacity,visibility' }, '<0.08');
+        } else {
+            finishClose();
+        }
+    };
+    const stepPortfolioCinema = direction => {
+        if(!cinemaCards.length) return;
+        openPortfolioCinema((portfolioCinemaIndex + direction + cinemaCards.length) % cinemaCards.length);
+    };
+    cinemaCards.forEach((card, index) => {
+        card.addEventListener('click', () => openPortfolioCinema(index));
+        card.addEventListener('keydown', e => {
+            if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPortfolioCinema(index); }
+        });
+        card.addEventListener('mouseenter', () => { if(cPlay) cPlay.textContent = 'OPEN'; });
+        card.setAttribute('aria-expanded', 'false');
+    });
+    if(portfolioCinemaClose) portfolioCinemaClose.addEventListener('click', closePortfolioCinema);
+    if(portfolioCinemaPrev) portfolioCinemaPrev.addEventListener('click', () => stepPortfolioCinema(-1));
+    if(portfolioCinemaNext) portfolioCinemaNext.addEventListener('click', () => stepPortfolioCinema(1));
+    document.addEventListener('keydown', e => {
+        if(!portfolioCinema || !portfolioCinema.classList.contains('is-active')) return;
+        if(e.key === 'Escape') closePortfolioCinema();
+        if(e.key === 'ArrowLeft') stepPortfolioCinema(-1);
+        if(e.key === 'ArrowRight') stepPortfolioCinema(1);
     });
 
     const acpSlides = Array.from(document.querySelectorAll('#honors .acp-slide'));
@@ -3182,6 +3357,136 @@ window.addEventListener('DOMContentLoaded', () => {
         );
     }
 });
+</script>
+<script>
+(() => {
+    const stage = document.getElementById('impactStage');
+    const cards = Array.from(document.querySelectorAll('.impact-card[data-impact-index]'));
+    const backgrounds = Array.from(document.querySelectorAll('[data-impact-background]'));
+    const kineticText = document.getElementById('impactKineticText');
+    const transportTitle = document.getElementById('impactTransportTitle');
+    const transportCount = document.getElementById('impactTransportCount');
+    const progress = document.getElementById('impactTransportProgress');
+    const prevButton = document.getElementById('impactPrev');
+    const nextButton = document.getElementById('impactNext');
+    const toggleButton = document.getElementById('impactToggle');
+    if(!stage || !cards.length || !kineticText || !transportTitle || !progress) return;
+
+    const reduceSignalMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const fineSignalPointer = window.matchMedia('(pointer: fine)').matches;
+    const cycleDuration = 5200;
+    const signals = [
+        { zh: '素材先行，节奏随后', en: 'MEDIA FIRST. RHYTHM FOLLOWS.', titleZh: '剪辑节奏', titleEn: 'CUT RHYTHM' },
+        { zh: '曝光有据，风格有度', en: 'EXPOSURE WITH REASON. STYLE WITH RESTRAINT.', titleZh: '色彩重心', titleEn: 'COLOR GRAVITY' },
+        { zh: '版本清楚，结果稳定', en: 'CLEAR VERSIONS. RELIABLE DELIVERY.', titleZh: '交付锁定', titleEn: 'DELIVERY LOCK' }
+    ];
+    let activeIndex = 0;
+    let isPlaying = !reduceSignalMotion;
+    let isVisible = false;
+    let cycleTimer = 0;
+
+    const getSignalLanguage = () => window.__siteLang === 'en' ? 'en' : 'zh';
+    const updateControlCopy = () => {
+        const lang = getSignalLanguage();
+        if(prevButton) prevButton.setAttribute('aria-label', lang === 'zh' ? '上一个后期信号' : 'Previous post signal');
+        if(nextButton) nextButton.setAttribute('aria-label', lang === 'zh' ? '下一个后期信号' : 'Next post signal');
+        if(toggleButton) toggleButton.setAttribute('aria-label', isPlaying ? (lang === 'zh' ? '暂停自动切换' : 'Pause auto cycle') : (lang === 'zh' ? '继续自动切换' : 'Resume auto cycle'));
+    };
+    const restartProgress = () => {
+        progress.style.transition = 'none';
+        progress.style.transform = isPlaying && isVisible ? 'scaleX(0)' : 'scaleX(1)';
+        if(!isPlaying || !isVisible || reduceSignalMotion) return;
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            progress.style.transition = `transform ${cycleDuration}ms linear`;
+            progress.style.transform = 'scaleX(1)';
+        }));
+    };
+    const scheduleCycle = () => {
+        window.clearTimeout(cycleTimer);
+        restartProgress();
+        if(!isPlaying || !isVisible || document.hidden || reduceSignalMotion) return;
+        cycleTimer = window.setTimeout(() => selectSignal(activeIndex + 1, true), cycleDuration);
+    };
+    const writeSignalCopy = () => {
+        const lang = getSignalLanguage();
+        const signal = signals[activeIndex];
+        kineticText.textContent = signal[lang];
+        transportTitle.textContent = signal[lang === 'zh' ? 'titleZh' : 'titleEn'];
+        transportCount.textContent = `${String(activeIndex + 1).padStart(2, '0')} / ${String(signals.length).padStart(2, '0')}`;
+        updateControlCopy();
+    };
+    const selectSignal = (nextIndex, animate = true) => {
+        activeIndex = (nextIndex + signals.length) % signals.length;
+        cards.forEach((card, index) => {
+            const active = index === activeIndex;
+            card.classList.toggle('is-active', active);
+            card.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        backgrounds.forEach((layer, index) => layer.classList.toggle('is-active', index === activeIndex));
+        if(animate && window.gsap && !reduceSignalMotion) {
+            window.gsap.killTweensOf(kineticText);
+            window.gsap.to(kineticText, {
+                yPercent: -35,
+                autoAlpha: 0,
+                filter: 'blur(9px)',
+                duration: 0.28,
+                ease: 'power2.in',
+                onComplete: () => {
+                    writeSignalCopy();
+                    window.gsap.fromTo(kineticText, { yPercent: 42, autoAlpha: 0, filter: 'blur(9px)' }, { yPercent: 0, autoAlpha: 1, filter: 'blur(0px)', duration: 0.72, ease: 'expo.out' });
+                }
+            });
+        } else {
+            writeSignalCopy();
+        }
+        scheduleCycle();
+    };
+    const toggleCycle = () => {
+        isPlaying = !isPlaying;
+        if(toggleButton) {
+            toggleButton.textContent = isPlaying ? 'Ⅱ' : '▶';
+            toggleButton.setAttribute('aria-pressed', isPlaying ? 'false' : 'true');
+        }
+        updateControlCopy();
+        scheduleCycle();
+    };
+
+    cards.forEach((card, index) => {
+        card.addEventListener('click', () => selectSignal(index));
+        card.addEventListener('keydown', event => {
+            if(event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                selectSignal(index);
+            }
+        });
+        if(fineSignalPointer && !reduceSignalMotion) {
+            card.addEventListener('pointermove', event => {
+                const rect = card.getBoundingClientRect();
+                card.style.setProperty('--card-x', `${(((event.clientX - rect.left) / rect.width) - 0.5) * 12}px`);
+                card.style.setProperty('--card-y', `${(((event.clientY - rect.top) / rect.height) - 0.5) * 12}px`);
+            }, { passive: true });
+            card.addEventListener('pointerleave', () => {
+                card.style.setProperty('--card-x', '0px');
+                card.style.setProperty('--card-y', '0px');
+            });
+        }
+    });
+    if(prevButton) prevButton.addEventListener('click', () => selectSignal(activeIndex - 1));
+    if(nextButton) nextButton.addEventListener('click', () => selectSignal(activeIndex + 1));
+    if(toggleButton) toggleButton.addEventListener('click', toggleCycle);
+
+    if('IntersectionObserver' in window) {
+        new IntersectionObserver(entries => {
+            isVisible = Boolean(entries[0] && entries[0].isIntersecting);
+            scheduleCycle();
+        }, { threshold: 0.18 }).observe(stage);
+    } else {
+        isVisible = true;
+    }
+    document.addEventListener('visibilitychange', scheduleCycle);
+    window.__updateImpactSignalLanguage = () => selectSignal(activeIndex, false);
+    selectSignal(0, false);
+})();
 </script>
 </body>
 </html>
