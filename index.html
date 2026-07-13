@@ -173,11 +173,11 @@
         .lang-switch { font: 700 11px var(--mono); color: var(--gray); display: flex; align-items: center; gap: 8px; margin-left: 24px; user-select: none; }
         .lang-switch span { transition: color 0.3s; cursor: pointer; } .lang-switch span.active { color: var(--red); pointer-events: none; }
         .magnetic-wrap { display: inline-block; padding: 10px; cursor: pointer; }
-        .contact-dock { position: fixed; top: 96px; right: 64px; z-index: 1001; display: grid; justify-items: end; gap: 8px; opacity: 0; transform: translate3d(12px, -10px, 0); pointer-events: none; transition: opacity 0.72s var(--ease-expo), transform 0.72s var(--ease-expo); }
+        .contact-dock { position: fixed; left: 40px; bottom: 34px; z-index: 1001; display: grid; justify-items: start; gap: 8px; opacity: 0; transform: translate3d(-12px, 10px, 0); pointer-events: none; transition: opacity 0.72s var(--ease-expo), transform 0.72s var(--ease-expo); }
         body.loader-complete .contact-dock { opacity: 1; transform: translate3d(0, 0, 0); pointer-events: auto; transition-delay: 0.28s; }
-        .contact-dock a { width: fit-content; display: inline-flex; align-items: center; gap: 12px; padding: 9px 12px 9px 10px; border: 1px solid rgba(255,255,255,0.13); border-radius: 999px; background: rgba(5,5,5,0.46); color: rgba(255,255,255,0.78); font: 800 10px var(--mono); letter-spacing: 0.09em; text-transform: uppercase; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 18px 44px rgba(0,0,0,0.24); transition: transform 0.34s var(--ease-expo), color 0.34s var(--ease-expo), border-color 0.34s var(--ease-expo), background 0.34s var(--ease-expo), box-shadow 0.34s var(--ease-expo); }
+        .contact-dock a { min-width: 250px; width: fit-content; display: grid; grid-template-columns: 8px 54px 1fr; align-items: center; gap: 12px; padding: 10px 16px 10px 12px; border: 1px solid rgba(255,255,255,0.13); border-radius: 999px; background: rgba(5,5,5,0.5); color: rgba(255,255,255,0.78); font: 800 10px var(--mono); letter-spacing: 0.08em; text-transform: uppercase; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 18px 44px rgba(0,0,0,0.24); transition: transform 0.34s var(--ease-expo), color 0.34s var(--ease-expo), border-color 0.34s var(--ease-expo), background 0.34s var(--ease-expo), box-shadow 0.34s var(--ease-expo); }
         .contact-dock a::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--red); box-shadow: 0 0 14px rgba(255,0,0,0.46); flex: 0 0 auto; }
-        .contact-dock a:hover, .contact-dock a:focus-visible { outline: none; color: var(--white); border-color: rgba(255,0,0,0.46); background: rgba(255,0,0,0.08); box-shadow: 0 18px 48px rgba(0,0,0,0.3), 0 0 28px rgba(255,0,0,0.12); transform: translateX(-4px); }
+        .contact-dock a:hover, .contact-dock a:focus-visible { outline: none; color: var(--white); border-color: rgba(255,0,0,0.46); background: rgba(255,0,0,0.08); box-shadow: 0 18px 48px rgba(0,0,0,0.3), 0 0 28px rgba(255,0,0,0.12); transform: translateX(4px); }
         .contact-dock span { color: rgba(255,255,255,0.42); font-size: 8px; letter-spacing: 0.18em; }
         
         .section-padding { padding: 140px 64px; max-width: 1600px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
@@ -968,8 +968,9 @@
 </nav>
 
 <aside class="contact-dock" aria-label="联系信息">
-    <a href="tel:+8619147552698" aria-label="拨打电话 19147552698"><span data-i18n="contact-phone-label" data-zh="电话" data-en="PHONE">电话</span>19147552698</a>
-    <a href="mailto:Yuboy07@outlook.com" aria-label="发送邮件到 Yuboy07@outlook.com"><span data-i18n="contact-mail-label" data-zh="邮箱" data-en="OUTLOOK">邮箱</span>Yuboy07@outlook.com</a>
+    <a href="tel:+8619847552698" aria-label="拨打电话 19847552698"><span data-i18n="contact-phone-label" data-zh="电话" data-en="PHONE">电话</span>19847552698</a>
+    <a href="mailto:Yuboy07@outlook.com" aria-label="发送邮件到 Yuboy07@outlook.com"><span data-i18n="contact-outlook-label" data-zh="邮箱" data-en="OUTLOOK">邮箱</span>Yuboy07@outlook.com</a>
+    <a href="mailto:1918096354@qq.com" aria-label="发送邮件到 1918096354@qq.com"><span data-i18n="contact-qq-label" data-zh="QQ 邮箱" data-en="QQ MAIL">QQ 邮箱</span>1918096354@qq.com</a>
 </aside>
 
 <section class="hero" id="hero-section">
