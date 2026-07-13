@@ -396,6 +396,8 @@
         .pipeline-layer.layer-graded { clip-path: inset(0 0 0 50%); will-change: clip-path; }
         .pipeline-handle { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: var(--red); z-index: 10; pointer-events: none; box-shadow: 0 0 20px var(--red); transform: translateX(-50%); will-change: left; }
         .pipeline-handle::after { content: '< CST SLIDER >'; position: absolute; top: 20px; left: 12px; font: 9px var(--mono); color: var(--red); background: rgba(5,5,5,0.85); padding: 4px 8px; border: 1px solid var(--red); letter-spacing: 2px; white-space: nowrap; }
+        .viewer-status { position: absolute; left: 14px; right: 14px; bottom: 12px; z-index: 12; display: flex; justify-content: space-between; gap: 12px; color: rgba(255,255,255,0.78); font: 800 8px var(--mono); letter-spacing: 0.1em; text-transform: uppercase; pointer-events: none; text-shadow: 0 0 14px rgba(0,0,0,0.9); }
+        .viewer-status span { padding: 5px 7px; border: 1px solid rgba(255,255,255,0.12); background: rgba(0,0,0,0.42); }
 
         .resolve-node-strip { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
         .resolve-node { min-height: 54px; padding: 9px; border: 1px solid rgba(255,255,255,0.12); background: #111; display: flex; flex-direction: column; justify-content: space-between; color: rgba(255,255,255,0.58); font: 800 8px var(--mono); letter-spacing: 0.08em; text-transform: uppercase; position: relative; overflow: hidden; }
@@ -420,6 +422,9 @@
         .resolve-control { border: 1px solid rgba(255,255,255,0.11); background: rgba(255,255,255,0.035); min-height: 46px; padding: 9px; display: flex; flex-direction: column; justify-content: space-between; }
         .resolve-control span { color: rgba(255,255,255,0.42); font: 800 7px var(--mono); letter-spacing: 0.12em; text-transform: uppercase; }
         .resolve-control strong { color: rgba(255,255,255,0.86); font: 900 11px var(--sans); }
+        .resolve-actions { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 8px; margin: 12px 0 14px; }
+        .resolve-action { min-height: 34px; border: 1px solid rgba(255,255,255,0.11); background: rgba(0,0,0,0.34); color: rgba(255,255,255,0.62); font: 900 8px var(--mono); letter-spacing: 0.12em; text-transform: uppercase; display: grid; place-items: center; }
+        .resolve-action.is-live { color: var(--red); border-color: rgba(255,0,0,0.42); background: rgba(255,0,0,0.07); }
         .primary-wheels { display: flex; justify-content: space-between; margin-top: 12px; }
         .wheel-col { display: flex; flex-direction: column; align-items: center; gap: 8px; }
         .wheel-title { font: 8px var(--mono); color: var(--gray); letter-spacing: 1px; }
@@ -1347,12 +1352,13 @@
             <div>
             <div class="pipeline-container focus-trigger" id="pipelineGradingBay" role="slider" tabindex="0" aria-label="对比 Log 与调色后的画面" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="调色后画面显示 50%">
                 <div class="pipeline-layer layer-log">
-                    <img src="assets/videos/city-grade-reel.jpg" alt="Log 画面预览">
+                    <img src="assets/videos/nightclub-grade-reference.jpg" alt="夜店 Log 画面预览">
                 </div>
                 <div class="pipeline-layer layer-graded" id="gradedLayer">
-                    <img src="assets/videos/landscape-grade-reel.jpg" id="imgGraded" alt="调色后画面预览">
+                    <img src="assets/videos/nightclub-grade-reference.jpg" id="imgGraded" alt="夜店调色后画面预览">
                 </div>
                 <div class="pipeline-handle" id="pipelineHandle"></div>
+                <div class="viewer-status" aria-hidden="true"><span>LOG / FLAT INPUT</span><span>FINAL / REC.709</span></div>
             </div>
             <div class="resolve-node-strip" aria-label="DaVinci Resolve 节点树示意">
                 <div class="resolve-node">01<br>NR</div>
@@ -1372,6 +1378,11 @@
                         <div class="resolve-control"><span>CST</span><strong>DWG -> 709</strong></div>
                         <div class="resolve-control"><span>GAMUT</span><strong>DaVinci Wide</strong></div>
                         <div class="resolve-control"><span>QC</span><strong>Scopes On</strong></div>
+                    </div>
+                    <div class="resolve-actions" aria-label="达芬奇调色流程状态">
+                        <div class="resolve-action is-live">Shot Match</div>
+                        <div class="resolve-action">Skin Safe</div>
+                        <div class="resolve-action">Export Check</div>
                     </div>
                     <div class="waveform-label" style="margin-bottom: 12px;"><span data-i18n="primary-wheels-label" data-zh="一级色轮" data-en="PRIMARY WHEELS">一级色轮</span></div>
                     <div class="primary-wheels">
